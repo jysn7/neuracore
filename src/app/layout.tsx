@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
 
   // Show navbar unless on signup or signin routes
-  const showNavbar = !pathname.includes("signup") && !pathname.includes("signin");
+  const showNavbar = !pathname.includes("signup") && !pathname.includes("signin") && !pathname.includes("login");
 
   return (
     <html lang="en">
