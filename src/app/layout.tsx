@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Roboto } from 'next/font/google'
 
+import "./globals.css";
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'], // pick the weights you need
+  variable: '--font-roboto',     // optional: enables using a CSS variable
+})
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
