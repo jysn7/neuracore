@@ -20,10 +20,12 @@
   --color-bg-dark: #1E1E1E;
   --color-bg-light: #f9fafb;
   --color-bg-gray: #2c2c2c;
+  --color-bg-dark-gray: #181B20;
   --color-bg-overlay: rgba(0,0,0,0.4);
 
   /*  Text */
   --color-text-primary: #ffffff;
+  --color-text-dark: #000000;
   --color-text-secondary: #757575; /*for subtext*/
   --color-text-green: #22C55E; /* for analytics */
 
@@ -44,5 +46,4 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-} 
- 
+}
