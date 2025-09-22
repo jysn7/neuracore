@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <nav className='h-[8vh] border-b-2 border-bg-gray flex justify-between px-[10vw] items-center bg-bg-dark'>
+    <nav className='h-[8vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray flex justify-between px-[12vw] items-center bg-bg '>
       <Link href="/" className=''>
         <svg width="121" height="25" viewBox="0 0 121 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M85.5971 21.1203L81.9602 23.9516L81.7043 24.1541H74.4346L74.6946 23.9516L76.2014 22.7772L79.5741 20.1451L81.3368 18.7716L81.9602 18.2857L84.3463 20.1451L85.5971 21.1203Z" fill="#B8B8B8"/>
@@ -63,33 +63,25 @@ const Navbar = () => {
         </button>
         
         {isMenuOpen && (
-          <div className='fixed inset-0 z-50'>
-            {/* Overlay */}
+          <div className='fixed inset-0 z-30'>
             <div 
-              className='absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300'
+              className='absolute inset-0 z-30 bg-black/50 backdrop-blur-sm transition-opacity duration-300'
               onClick={() => setIsMenuOpen(false)}
             ></div>
 
-            {/* Sidebar */}
-            <div className='absolute top-0 bottom-0 right-0 w-[60vw] bg-bg-dark shadow-xl transform transition-transform duration-300 ease-in-out translate-x-0'>
-              
-              {/* Close Button */}
+            <div className='absolute z-30 top-0 bottom-0 right-0 w-[60vw] bg-bg-dark shadow-xl transform transition-transform duration-300 ease-in-out translate-x-0'>        
               <div 
                 onClick={() => setIsMenuOpen(false)} 
                 className='flex justify-end p-4'
               >
                 <X className='cursor-pointer text-white hover:text-red-500 transition-colors duration-300' size={24} />
               </div>
-
-              {/* Profile */}
               <div className='flex items-center gap-3 p-4 border-b border-bg-gray hover:bg-bg-dark-gray transition-colors cursor-pointer'>
                 <div className='bg-bg-dark-gray p-2 rounded-full flex items-center justify-center'>
                   <UserRound size={18}/>
                 </div>          
                 <h1 className='text-text-primary font-semibold'>Profile</h1>
               </div>
-
-              {/* Menu Items */}
               <div className='flex flex-col mt-4'>
                 <Link 
                   href="/dashboard" 
