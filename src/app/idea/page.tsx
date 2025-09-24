@@ -44,9 +44,9 @@ const Idea = () => {
     },
     ];
   return (
-    <div className='w-full px-[8vw] md:px-[18vw] pb-8 min-h-screen bg-bg'>
+    <div className='w-full px-[12vw] md:px-[16vw] pb-8 min-h-screen bg-bg'>
         <IdeaHeader 
-         coverImageText="AI-Powered Finance Assistant Cover Image"
+         coverImageUrl="https://images.unsplash.com/photo-1734779205675-a9480bd61a7b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
          categories={["AI & Technology", "Agriculture"]}
          title="AI-Powered Personal Finance Assistant"
          description="A comprehensive smart assistant that analyzes spending patterns and provides personalized financial advice using advanced machine learning algorithms."
