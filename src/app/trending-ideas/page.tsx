@@ -222,7 +222,7 @@ const TrendingIdeas = () => {
 
         </div>
         <div className='grid px-[12vw] md:px-[16vw]  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-6 gap-3 md:gap-6'>
-            {/* these are the cards for the ideas */}
+         
             {ideas.map((idea) => (
                 <Link
                 href={`/ideas/${idea.id}`}
