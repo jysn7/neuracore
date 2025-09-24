@@ -225,7 +225,7 @@ const TrendingIdeas = () => {
             {/* these are the cards for the ideas */}
             {ideas.map((idea) => (
                 <Link
-                href={`/ideas/${idea.id}`}
+                href="idea"
                 key={idea.id}
                 className=" rounded-lg hover:border-2  hover:border-border-secondary hover:scale-102 tranform-all duration-300 bg-bg-dark shadow-lg overflow-hidden"
                 >
