@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <nav className='h-[8vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray flex justify-between px-[12vw] items-center bg-bg '>
-      <Link href="/" className=''>
+      <Link href="/trending-ideas" className=''>
         <svg width="121" height="25" viewBox="0 0 121 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M85.5971 21.1203L81.9602 23.9516L81.7043 24.1541H74.4346L74.6946 23.9516L76.2014 22.7772L79.5741 20.1451L81.3368 18.7716L81.9602 18.2857L84.3463 20.1451L85.5971 21.1203Z" fill="#B8B8B8"/>
           <path d="M85.5977 6.50171L82.5842 8.96177L81.9608 9.47133L81.3375 8.96515V8.96177L78.3281 6.50509L76.2021 8.24299V14.1822L71.0625 18.3836V6.50509L73.1885 4.76381L74.6953 3.53209L76.2021 2.30038L78.3281 0.562477L81.3375 3.02254L81.9608 3.53209L83.4676 4.76381L85.5977 6.50171Z" fill="#B8B8B8"/>
@@ -24,7 +24,7 @@ const Navbar = () => {
       </Link>
       <div className='flex p-2 gap-6'>
         <Link 
-          href="" 
+          href="/dashboard(user)" 
           className='group hidden md:flex transition-all duration-400 hover:text-btn-primary-hover text-text-secondary items-center gap-1'
         >
           <svg 
