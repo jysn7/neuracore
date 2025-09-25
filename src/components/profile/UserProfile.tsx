@@ -27,7 +27,7 @@ const UserProfile = () => {
               <h2 className="text-2xl font-bold text-white">Francie Monquer</h2>
               <p className="text-gray-400">francie@neuracore.com</p>
             </div>
-            <button className="flex items-center gap-2 text-sm text-gray-400 border border-gray-600 px-4 py-2 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-colors">
+            <button className="flex cursor-pointer items-center gap-2 text-sm text-gray-400 border border-gray-600 px-4 py-2 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-colors">
               <Edit size={16} />
               Edit Profile
             </button>

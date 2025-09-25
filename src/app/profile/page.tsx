@@ -7,7 +7,7 @@ import AccountSettings from '@/components/profile/AccountSettings';
 
 export default function UserProfilePage({ params }: { params: { id: string } }) {
   return (
-    <main className="p-8 text-white">
+    <main className="py-8 px-[12vw] bg-bg md:px-[16vw] text-white">
       <ProfileTabs />
 
       <div id="profile" className="mt-8">

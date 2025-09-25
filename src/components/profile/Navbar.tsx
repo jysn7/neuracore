@@ -47,13 +47,13 @@ const Navbar = () => {
           <MailIcon size={17}/>
           Subscribe
         </Link>
-        <Link href="/" className='hidden md:block relative z-3 top-3.5 text-text-secondary '>
+        <Link href="/profile#notifications" className='hidden md:block relative z-3 top-3.5 text-text-secondary '>
           <div className='absolute z-4 text-white bg-red-500 px-1.5 flex justify-center items-center  text-[10px] rounded-full left-3  -top-2'>
             <p className='pt-0.5'>4</p>
           </div>
           <BellIcon size={19} />
         </Link>
-        <Link href="" className="hidden md:flex items-center justify-center">
+        <Link href="/profile" className="hidden md:flex items-center justify-center">
           <div className='text-white bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2'>
             <UserRound size={21}/>
           </div>
