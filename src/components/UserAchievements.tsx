@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award } from 'lucide-react';
 import Achievements from './Achievements'; 
+import AchievementCard from './profile/AchievementCard';
 
 const UserAchievements = () => {
   const achievements = [
@@ -20,7 +21,7 @@ const UserAchievements = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {achievements.map((ach) => (
-          <Achievements
+          <AchievementCard
             key={ach.title}
             icon={ach.icon}
             title={ach.title}
