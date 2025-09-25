@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pencil, MapPin, Link as LinkIcon, CalendarDays } from 'lucide-react';
+import { Edit, MapPin, Link as LinkIcon, CalendarDays } from 'lucide-react';
 
 interface StatItemProps {
   value: string;
@@ -17,7 +17,7 @@ const UserProfile = () => {
   return (
     <div className="bg-[#1C1C1C] p-8 rounded-lg border border-gray-700">
       <div className="flex flex-col md:flex-row items-center gap-8">
-        <div className="flex-shrink-0 w-24 h-24 bg-gray-600 rounded-full flex items-center justify-center text-white text-3xl font-bold">
+        <div className="flex-shrink-0 self-start w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center text-white text-3xl font-bold">
           FM
         </div>
 
@@ -27,8 +27,8 @@ const UserProfile = () => {
               <h2 className="text-2xl font-bold text-white">Francie Monquer</h2>
               <p className="text-gray-400">francie@neuracore.com</p>
             </div>
-            <button className="flex items-center gap-2 text-sm text-white bg-[#2A2A2A] border border-gray-600 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-              <Pencil size={16} />
+            <button className="flex items-center gap-2 text-sm text-gray-400 border border-gray-600 px-4 py-2 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-colors">
+              <Edit size={16} />
               Edit Profile
             </button>
           </div>
@@ -52,4 +52,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile; 
+export default UserProfile;
