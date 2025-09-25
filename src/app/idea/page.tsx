@@ -4,10 +4,11 @@ import AddComment from '@/components/Idea/AddComment';
 import IdeaAction from '@/components/Idea/IdeaAction';
 import IdeaComments from '@/components/Idea/IdeaComments';
 import IdeaDetails from '@/components/Idea/IdeaDetails';
+import IdeaHeader from '@/components/Idea/IdeaHeader';
 import IdeaStats from '@/components/Idea/IdeaStats';
 import IdeaTags from '@/components/Idea/IdeaTags';
 import RelatedIdeas from '@/components/Idea/RelatedIdeas';
-import IdeaHeader from '@/components/Idea/IdeaHeader';
+
 import { ArrowLeft, Bookmark, Eye, Heart, HeartIcon, MessageCircle, Save, SaveIcon, Share, Share2, ShareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import React from 'react'
 
@@ -46,7 +47,7 @@ const Idea = () => {
   return (
     <div className='w-full px-[12vw] md:px-[16vw] pb-8 min-h-screen bg-bg'>
         <IdeaHeader 
-         coverImageUrl="https://images.unsplash.com/photo-1734779205675-a9480bd61a7b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         coverImageUrl="https://images.unsplash.com/photo-1741983139985-7fff27fffc3f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
          categories={["AI & Technology", "Agriculture"]}
          title="AI-Powered Personal Finance Assistant"
          description="A comprehensive smart assistant that analyzes spending patterns and provides personalized financial advice using advanced machine learning algorithms."
