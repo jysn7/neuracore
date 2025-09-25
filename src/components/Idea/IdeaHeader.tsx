@@ -21,7 +21,7 @@ const IdeaHeader: React.FC<IdeaHeaderProps> = ({
     <>
       <Link
         href={link} 
-        className="flex justify-start gap-2 py-4 text-text-secondary hover:text-text-primaryry items-center cursor-pointer"
+        className="flex justify-start gap-2 py-4 text-text-secondary hover:text-text-primary items-center cursor-pointer"
       >
         <ArrowLeft size={16} />
         <p className="font-semibold text-sm">Back to Ideas</p>
