@@ -17,7 +17,7 @@ const AchievementItem: React.FC<AchievementItemProps> = ({ icon, title, descript
     </div>
   </div>
 );
-3
+
 const Achievements = () => {
   return (
     <div className="bg-[#1C1C1C] p-6 rounded-lg border border-gray-700 text-white">
