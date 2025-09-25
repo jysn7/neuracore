@@ -1,6 +1,6 @@
 // src/app/dashboard(user)/page.tsx
 import React from 'react';
-import StatCard from '@/components/Stats'; // This now points to your Stats.tsx file
+import StatCard from '@/components/profile/Stats'; // This now points to your Stats.tsx file
 import { Eye, Heart, MessageSquare, Users } from 'lucide-react';
 
 export default function DashboardPage() {

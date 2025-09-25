@@ -7,7 +7,7 @@ import IdeaDetails from '@/components/Idea/IdeaDetails';
 import IdeaStats from '@/components/Idea/IdeaStats';
 import IdeaTags from '@/components/Idea/IdeaTags';
 import RelatedIdeas from '@/components/Idea/RelatedIdeas';
-import IdeaHeader from '@/components/IdeaHeader';
+import IdeaHeader from '@/components/profile/IdeaHeader';
 import { ArrowLeft, Bookmark, Eye, Heart, HeartIcon, MessageCircle, Save, SaveIcon, Share, Share2, ShareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import React from 'react'
 
