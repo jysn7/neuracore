@@ -1,7 +1,8 @@
 import React from 'react';
 import { Award } from 'lucide-react';
 import Achievements from './Achievements'; 
-import AchievementCard from './profile/AchievementCard';
+import AchievementCard from './AchievementCard';
+
 
 const UserAchievements = () => {
   const achievements = [
