@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 type IdeaHeaderProps = {
-  coverImageText?: string
+  coverImageUrl?: string
   categories: string[]
   title: string
   description: string
@@ -11,7 +11,7 @@ type IdeaHeaderProps = {
 }
 
 const IdeaHeader: React.FC<IdeaHeaderProps> = ({ 
-  coverImageText = "Cover Image",
+  coverImageUrl = "Cover Image",
   categories,
   title,
   description,
@@ -21,15 +21,15 @@ const IdeaHeader: React.FC<IdeaHeaderProps> = ({
     <>
       <Link
         href={link} 
-        className="flex justify-start gap-2 py-4 text-text-secondary items-center cursor-pointer"
+        className="flex justify-start gap-2 py-4 text-text-secondary hover:text-text-primary items-center cursor-pointer"
       >
         <ArrowLeft size={16} />
         <p className="font-semibold text-sm">Back to Ideas</p>
       </Link>
-      <div className="w-full h-48 md:h-72 bg-red-950/55 flex justify-center items-center rounded-lg">
-        <p className="text-sm text-text-secondary font-semibold">
-          {coverImageText}
-        </p>
+      <div className="w-full h-42 md:h-92 bg-red-950/55 flex justify-center items-center rounded-lg">
+        <img 
+        className="w-full h-full object-cover rounded"
+        src={coverImageUrl} alt="cover-img" />
       </div>
       <div className="flex my-4 gap-2">
         {categories.map((cat, i) => (

@@ -1,20 +1,14 @@
-// src/app/dashboard(user)/page.tsx
 import React from 'react';
-import StatCard from '@/components/Stats'; // This now points to your Stats.tsx file
+import StatCard from '@/components/profile/Stats';
+import IdeaPerformance from '@/components/IdeaPerformance'; 
+import QuickStats from '@/components/QuickStats'; 
+import Achievements from '@/components/profile/Achievements'; 
+import ActivityThisWeek from '@/components/ActivityThisWeek'; 
 import { Eye, Heart, MessageSquare, Users } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
-    <main className="p-8">
-      {/* Header Section */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">Dashboard</h1>
-        <p className="text-gray-400 mt-2">
-          Track your ideas' performance and engagement
-        </p>
-      </div>
-
-      {/* Stats Grid Section */}
+    <main className="py-8 px-[12vw] md:px-[16vw] bg-bg">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Views"
@@ -40,6 +34,40 @@ export default function DashboardPage() {
           change="+22%"
           icon={<Users size={24} className="text-gray-400" />}
         />
+      </div>
+
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <div className="bg-[#121212] p-6 rounded-lg border border-gray-700">
+            <h2 className="text-2xl font-bold text-white mb-6">Recent Ideas Performance</h2>
+            <div className="flex flex-col gap-4">
+              <IdeaPerformance
+                title="AI-Powered Personal Finance Assistant"
+                tag={{ text: 'trending', color: 'bg-red-500' }}
+                stats={{ views: '12,500', likes: '892', comments: '156', rating: '4.8/5' }}
+                time="2 hours ago"
+              />
+              <IdeaPerformance
+                title="Sustainable Urban Farming Network"
+                tag={{ text: 'popular', color: 'bg-gray-600' }}
+                stats={{ views: '8,300', likes: '654', comments: '89', rating: '4.6/5' }}
+                time="1 day ago"
+              />
+              <IdeaPerformance
+                title="Virtual Reality Therapy Sessions"
+                tag={{ text: 'viral', color: 'bg-gray-600' }}
+                stats={{ views: '15,600', likes: '1,200', comments: '234', rating: '4.9/5' }}
+                time="3 days ago"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-8">
+          <QuickStats />
+          <Achievements />
+          <ActivityThisWeek />
+        </div>
       </div>
     </main>
   );
