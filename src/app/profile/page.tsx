@@ -1,9 +1,9 @@
 import React from 'react';
-import ProfileTabs from '@/components/ProfileTabs';
-import UserProfile from '@/components/UserProfile'; 
-import UserAchievements from '@/components/UserAchievements';
-import Notifications from '@/components/Notifications'
-import AccountSettings from '@/components/AccountSettings';
+import ProfileTabs from '@/components/profile/ProfileTabs';
+import UserProfile from '@/components/profile/UserProfile'; 
+import UserAchievements from '@/components/profile/UserAchievements';
+import Notifications from '@/components/profile/Notifications'
+import AccountSettings from '@/components/profile/AccountSettings';
 
 export default function UserProfilePage({ params }: { params: { id: string } }) {
   return (

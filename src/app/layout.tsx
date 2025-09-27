@@ -1,7 +1,7 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/profile/Navbar";
 import { usePathname } from "next/navigation";
 
 const geistSans = Geist({ 

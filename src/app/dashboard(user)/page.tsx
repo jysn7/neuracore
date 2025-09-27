@@ -1,8 +1,8 @@
 import React from 'react';
-import StatCard from '@/components/Stats';
+import StatCard from '@/components/profile/Stats';
 import IdeaPerformance from '@/components/IdeaPerformance'; 
 import QuickStats from '@/components/QuickStats'; 
-import Achievements from '@/components/Achievements'; 
+import Achievements from '@/components/profile/Achievements'; 
 import ActivityThisWeek from '@/components/ActivityThisWeek'; 
 import { Eye, Heart, MessageSquare, Users } from 'lucide-react';
 
