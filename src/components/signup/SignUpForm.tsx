@@ -2,10 +2,14 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Eye, EyeClosed, CheckCircle, LockIcon, SearchIcon } from "lucide-react";
 import Terms from "./Terms";
-
+import { supabase } from "@/app/supabase-client";
+import { signUpWithEmail } from "../auth-functions";
 export default function SignupForm() {
 
   const [showPassword, setShowPassword] = useState(false);
@@ -13,34 +17,51 @@ export default function SignupForm() {
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
 
-  
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    accountType: "innovator",
+
+  // Zod schema for validation
+  const signupSchema = z.object({
+    firstName: z.string().min(1, { message: "First name is required" }),
+    lastName: z.string().min(1, { message: "Last name is required" }),
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string()
+      .min(6, { message: "Password must be at least 6 characters" })
+      .regex(/[A-Z]/, { message: "Password must include at least one uppercase letter" }),
+    confirmPassword: z.string(),
+    accountType: z.enum(["innovator", "recruiter"]),
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+  type SignupFormData = z.infer<typeof signupSchema>;
+
+  const { register, handleSubmit, formState: { errors } } = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      accountType: "innovator",
+    },
   });
 
   
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Signup Data:", formData);
-    
+
+
+  const onSubmit = (data: SignupFormData) => {
+    signUpWithEmail(data.email, data.password);
+    // Add signup logic here
   };
 
   return (
     <div className="flex flex-col justify-center w-full  px- py-2 gap-4">
-            <form className="bg-bg-gray tracking-wide flex flex-col items-center px-6 sm:px-6 md:px-8 py-8 h-full text-white rounded-3xl w-full ">
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-bg-gray tracking-wide flex flex-col items-center px-6 sm:px-6 md:px-8 py-8 h-full text-white rounded-3xl w-full ">
               <h1 className="text-xl font-semibold text-center">Create Account</h1>
               <h2 className="text-xs mt-3 text-text-secondary text-center">
                 Start your innovation journey today
@@ -57,11 +78,11 @@ export default function SignupForm() {
                   <input
                     type="text"
                     id="firstName"
-                    name="firstName"
-                    required
+                    {...register("firstName")}
                     placeholder="e.g. John"
                     className="font-[500] text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
                   />
+                  {errors.firstName && <p className="text-red-400 text-xs mt-1">{errors.firstName.message}</p>}
                 </div>
 
                 <div className="flex-1">
@@ -74,11 +95,11 @@ export default function SignupForm() {
                   <input
                     type="text"
                     id="lastName"
-                    name="lastName"
-                    required
+                    {...register("lastName")}
                     placeholder="e.g. Doe"
                     className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
                   />
+                  {errors.lastName && <p className="text-red-400 text-xs mt-1">{errors.lastName.message}</p>}
                 </div>
               </div>
 
@@ -92,11 +113,11 @@ export default function SignupForm() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
-                  required
+                  {...register("email")}
                   placeholder="e.g. johndoe@gmail.com"
                   className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
                 />
+                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
 
                 <label
                   htmlFor="password"
@@ -108,11 +129,11 @@ export default function SignupForm() {
                   <input
                     type={showPassword ? "text" : "password"}
                     id="password"
-                    name="password"
-                    required
+                    {...register("password")}
                     placeholder="Enter your password"
                     className="font-[500] text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
                   />
+                  {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>}
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
@@ -129,13 +150,13 @@ export default function SignupForm() {
                   Confirm Password
                 </label>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   id="confirmPassword"
-                  required
-                  name="confirmPassword"
+                  {...register("confirmPassword")}
                   placeholder="Confirm your password"
                   className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
                 />
+                {errors.confirmPassword && <p className="text-red-400 text-xs mt-1">{errors.confirmPassword.message}</p>}
               </div>
 
               <h1 className="font-semibold text-neutral-300 mr-[92%] text-[10px]">
@@ -145,8 +166,8 @@ export default function SignupForm() {
                 <label className="flex-1">
                   <input
                     type="radio"
-                    name="accountType"
                     value="innovator"
+                    {...register("accountType")}
                     defaultChecked
                     className="hidden peer"
                   />
@@ -158,10 +179,11 @@ export default function SignupForm() {
                 <label className="flex-1">
                   <input
                     type="radio"
-                    name="accountType"
                     value="recruiter"
+                    {...register("accountType")}
                     className="hidden peer"
                   />
+                {errors.accountType && <p className="text-red-400 text-xs mt-1">{errors.accountType.message}</p>}
                   <span className="block w-full text-center  text-xs px-4 py-1.5 border border-bg-dark bg-bg-dark text-text-secondary peer-checked:bg-btn-primary peer-checked:text-white peer-checked:border-bg-dark-gray transition-all duration-300 rounded-r-lg cursor-pointer hover:bg-btn-secondary-hover hover:text-white">
                     Recruiter
                   </span>

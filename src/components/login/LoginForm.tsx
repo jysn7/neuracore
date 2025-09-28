@@ -2,6 +2,23 @@
 import { Eye, EyeClosed } from 'lucide-react';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ca } from 'zod/locales';
+import { signInWithEmail } from '../auth-functions';
+
+
+
+
+  // Zod schema for validation
+  const LoginSchema = z.object({
+
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string()
+
+  });
+
+  type FormData = z.infer<typeof LoginSchema>;
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -15,16 +32,24 @@ const LoginForm = () => {
   };
   
   
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
       e.preventDefault();
-      console.log("Login Data:", formData);
-  
+      //console.log("Login Data:", formData);
      // link to backend
     };
+
+async function handleSubmitAsync(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+  signInWithEmail(email, password);
+}
   return (
     <div className="flex flex-col justify-center w-full  px-2 py-2 gap-4">
             <form 
-             onSubmit={handleSubmit}
+             onSubmit={handleSubmitAsync} 
              className="bg-bg-gray md:px-8 tracking-wide flex flex-col items-center px-4 sm:px-6  py-8 h-full text-white rounded-3xl w-full ">
               <h1 className="text-xl font-semibold text-center">Sign in</h1>
               <h2 className="text-xs mt-2 text-neutral-400 text-center">Enter your credentials to access your account</h2>
@@ -33,8 +58,8 @@ const LoginForm = () => {
                 <label htmlFor="email" className='font-semibold text-neutral-300'>Username</label>
                 <input
                   type="text"
-                  id="username"
-                  name="username"
+                  id="email"
+                  name="email"
                   placeholder='username@neura.com'
                   className="
                             text-[0.8vw] text-white 
