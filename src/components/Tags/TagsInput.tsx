@@ -1,4 +1,3 @@
-// src/components/TagsInput.tsx
 "use client";
 import React, { useState } from 'react';
 
@@ -22,7 +21,7 @@ const TagsInput = () => {
   };
 
   return (
-    <div className="bg-[#1C1C1C] border border-gray-700 rounded-lg p-4 h-full">
+    <div className="bg-[#1C1C1C] border border-gray-700 rounded-lg p-4 h-64">
       <h3 className="font-semibold mb-4">Tags</h3>
       <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag) => (
@@ -39,10 +38,10 @@ const TagsInput = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Type a tag and press Enter"
+        placeholder="Search"
         className="w-full bg-[#2A2A2A] border border-gray-600 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-red-500"
       />
-      <p className="text-xs text-gray-500 mt-2">Start with '#' to see tag suggestions.</p>
+      <p className="text-xs text-gray-500 mt-2">Enter '#' to see tag suggestions.</p>
     </div>
   );
 };
