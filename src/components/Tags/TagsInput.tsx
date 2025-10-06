@@ -21,13 +21,13 @@ const TagsInput = () => {
   };
 
   return (
-    <div className="bg-[#1C1C1C] border border-gray-700 rounded-lg p-4 h-64">
+    <div className="bg-bg-dark border border-border-secondary rounded-lg p-4 h-64">
       <h3 className="font-semibold mb-4">Tags</h3>
       <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag) => (
-          <div key={tag} className="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-2">
+          <div key={tag} className="bg-btn-secondary text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-2">
             {tag}
-            <button onClick={() => removeTag(tag)} className="text-gray-400 hover:text-white">
+            <button onClick={() => removeTag(tag)} className="text-text-secondary hover:text-text-primary">
               &times;
             </button>
           </div>
@@ -39,9 +39,9 @@ const TagsInput = () => {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Search"
-        className="w-full bg-[#2A2A2A] border border-gray-600 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-red-500"
+        className="w-full bg-bg-gray border border-btn-secondary-hover rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand-red"
       />
-      <p className="text-xs text-gray-500 mt-2">Enter '#' to see tag suggestions.</p>
+      <p className="text-xs text-text-secondary mt-2">Enter '#' to see tag suggestions.</p>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 "use client";
-import { BellIcon, HamburgerIcon, LogOut, LucideHamburger, MailIcon, Menu, MoonIcon, Plus, Settings, SunIcon, UserRound, X } from 'lucide-react';
+import { BellIcon, HamburgerIcon, LogOut, LucideHamburger, MailIcon, Menu, MoonIcon, Plus, Settings, Star, SunIcon, TrendingUp, UserRound, X } from 'lucide-react';
 import Link from 'next/link'
 import React, { useState, useRef, useEffect } from "react";
 
@@ -85,8 +85,8 @@ const Navbar = () => {
       <div className='flex p-2 gap-4'>
 
         {/* Create post Icon */}
-        <Link href="/profile#notifications" className='hidden md:flex items-center justify-center'>
-          <div className='text-bg-dark-gray bg-text-primary transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2'>
+        <Link href="/submit-idea" className='hidden md:flex items-center justify-center'>
+          <div className='text-bg-dark-gray bg-text-primary transition-all duration-400 border-transparent border-3 hover:bg-bg-gray hover:text-text-primary rounded-full p-2'>
             <Plus size={19} />
           </div>   
         </Link>
@@ -97,15 +97,10 @@ const Navbar = () => {
           Subscribe
         </Link>
 
-        
-
-        
-
-        {/* Dark Mode Icon */}
         {/* Dark Mode Toggle */}
         <button
           onClick={toggleTheme}
-          className="hidden md:flex items-center justify-center text-white bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2"
+          className="hidden md:flex items-center hover:bg-btn-secondary-hover cursor-pointer justify-center text-text-primary bg-bg-dark-gray transition-all duration-400 border-transparent border-3  rounded-full p-2"
           aria-label="Toggle theme"
         >
           {theme === 'dark' ? <SunIcon size={19} /> : <MoonIcon size={19} />}
@@ -115,10 +110,10 @@ const Navbar = () => {
         <div className="hidden md:flex items-center relative justify-center" ref={profileRef}>
           <button
             onClick={() => setIsProfileOpen((prev) => !prev)}
-            className="relative text-white cursor-pointer bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2"
+            className="relative text-text-primary hover:bg-btn-secondary-hover cursor-pointer bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2"
           >
             <UserRound size={21} />
-            <div className="absolute z-4 text-white bg-red-500 px-1.5 flex justify-center items-center text-[10px] rounded-full -right-1 -top-1">
+            <div className="absolute z-4 text-text-primary bg-red-500 px-1.5 flex justify-center items-center text-[10px] rounded-full -right-1 -top-1">
               <p className="pt-0.5">4</p>
             </div>
           </button>
@@ -126,6 +121,12 @@ const Navbar = () => {
           {/* Dropdown Menu */}
           {isProfileOpen && (
             <div className="absolute right-0 top-9 mt-3 w-44 rounded-lg border border-bg-gray bg-bg-dark shadow-lg z-50">
+              <Link
+                href="/profile"
+                className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:text-white hover:bg-bg-dark-gray transition-all"
+              >
+                <UserRound size={21} /> My Profile
+              </Link>
               <Link
                 href="/profile#notifications"
                 className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:text-white hover:bg-bg-dark-gray transition-all"
@@ -167,15 +168,15 @@ const Navbar = () => {
               >
                 <X className='cursor-pointer text-white hover:text-red-500 transition-colors duration-300' size={24} />
               </div>
-              <div className='flex items-center gap-3 p-4 border-b border-bg-gray hover:bg-bg-dark-gray transition-colors cursor-pointer'>
+              <Link href="/profile" className='flex items-center gap-3 p-4 border-b border-bg-gray hover:bg-bg-dark-gray transition-colors cursor-pointer'>
                 <div className='bg-bg-dark-gray p-2 rounded-full flex items-center justify-center'>
                   <UserRound size={18}/>
                 </div>          
-                <h1 className='text-text-primary font-semibold'>Profile</h1>
-              </div>
+                <h1 className='text-text-primary font-semibold'> My Profile</h1>
+              </Link>
               <div className='flex flex-col mt-4'>
                 <Link 
-                  href="/dashboard" 
+                  href="/dashboard(user)" 
                   className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
                 >
                   <svg className='stroke-text-secondary group-hover:stroke-red-500' width="17" height="19" viewBox="0 0 17 17" fill="none">
@@ -184,7 +185,21 @@ const Navbar = () => {
                   <span className='text-text-primary font-medium'>Dashboard</span>
                 </Link>
                 <Link 
-                  href="/settings" 
+                  href="/trending-ideas" 
+                  className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
+                >
+                  <TrendingUp />
+                  <span className='text-text-primary font-medium'>Ideas</span>
+                </Link>
+                <Link 
+                  href="/leaderboard" 
+                  className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
+                >
+                  <Star />
+                  <span className='text-text-primary font-medium'>Leaderboard</span>
+                </Link>
+                <Link 
+                  href="/profile#settings" 
                   className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
                 >
                   <svg className='stroke-text-secondary group-hover:stroke-red-500' width="17" height="19" viewBox="0 0 17 17" fill="none">
@@ -192,6 +207,19 @@ const Navbar = () => {
                   </svg>
                   <span className='text-text-primary font-medium'>Settings</span>
                 </Link>
+                <button 
+                  onClick={toggleTheme}
+                  className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
+                >
+                  {theme === 'dark' ? <SunIcon size={19} /> : <MoonIcon size={19} />}
+                  <span className='text-text-primary font-medium'>Mode</span>
+                </button>
+                <button 
+                  className='flex items-center gap-3 p-4 hover:bg-bg-dark-gray transition-colors duration-300 rounded-r-full'
+                >
+                  <MailIcon />
+                  <span className='text-text-primary font-medium'>Subscribe</span>
+                </button>
               </div>
               
             </div>
