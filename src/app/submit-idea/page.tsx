@@ -2,14 +2,16 @@
 import React, { useState } from 'react';
 import { UploadCloud } from 'lucide-react';
 import TagsInput from '@/components/Tags/TagsInput'; 
+import TiptapEditor from '@/components/submitIdea/TiptapEditor';
 
 const SubmitIdeaPage = () => {
   const [ideaTitle, setIdeaTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
+  const [content, setContent] = useState("");
 
   return (
-    <main className="p-8 text-white bg-[#141414] min-h-screen">
+    <main className="p-8 text-white py-8 px-[12vw] md:px-[16vw] bg-[#141414] min-h-screen">
       <h1 className="text-3xl font-bold mb-8">Submit Idea</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -39,15 +41,9 @@ const SubmitIdeaPage = () => {
             className="w-full bg-[#1C1C1C] border border-gray-700 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-red-500"
           />
 
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Detailed Description"
-            rows={10}
-            className="w-full bg-[#1C1C1C] border border-gray-700 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
+          <TiptapEditor content={content} onChange={setContent} />
         </div>
-
+        
         <div className="space-y-6">
           <TagsInput />
           
