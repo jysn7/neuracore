@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Lock } from 'lucide-react';
+import { Lock, ShieldCheck } from 'lucide-react';
 
 const Payment = () => {
   return (
@@ -37,16 +37,18 @@ const Payment = () => {
         </div>
         
         <div className="flex items-center text-sm text-gray-500">
-          <Lock size={14} className="mr-2" />
+          <Lock size={14} className="mr-2 text-red-600" />
           Your payment information is encrypted and secure
         </div>
 
-        <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">
-          Pay $32.69
+        <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+          <ShieldCheck size={18} />
+          Pay R120.00
         </button>
       </form>
     </div>
   );
 };
+
 
 export default Payment;

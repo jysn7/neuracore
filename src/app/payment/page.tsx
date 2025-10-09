@@ -1,5 +1,6 @@
 import React from 'react';
-import PaymentForm from '@/components/Payment';
+import Image from 'next/image'; 
+import Payment from '@/components/payment/Payment';
 import OrderSummary from '@/components/OrderSummary';
 import { Lock, ShieldCheck } from 'lucide-react';
 
@@ -8,13 +9,18 @@ const PaymentPage = () => {
     <div className="bg-gray-100 min-h-screen p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <svg width="24" height="24" viewBox="0 0 121 25" /* ...logo path... */ ></svg>
+          <Image
+            src="/credit-card.svg" 
+            alt="Secure Checkout Icon"
+            width={28}
+            height={28}
+          />
           <h1 className="text-2xl font-bold">Secure Checkout</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <PaymentForm />
+            <Payment />
           </div>
 
           <div>
@@ -23,8 +29,8 @@ const PaymentPage = () => {
         </div>
         
         <div className="flex justify-center items-center gap-4 mt-8 text-sm text-gray-500">
-          <span className="flex items-center gap-1"><ShieldCheck size={16} /> SSL Secured</span>
-          <span className="flex items-center gap-1"><Lock size={16} /> 256-bit Encryption</span>
+          <span className="flex items-center gap-1"><ShieldCheck size={16} className="text-green-600" /> SSL Secured</span>
+          <span className="flex items-center gap-1"><Lock size={16} className="text-blue-500" /> 256-bit Encryption</span>
         </div>
       </div>
     </div>
