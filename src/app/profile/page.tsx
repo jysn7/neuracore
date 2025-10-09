@@ -4,8 +4,18 @@ import UserProfile from '@/components/profile/UserProfile';
 import UserAchievements from '@/components/profile/UserAchievements';
 import Notifications from '@/components/profile/Notifications'
 import AccountSettings from '@/components/profile/AccountSettings';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+export default async function UserProfilePage({ params }: { params: { id: string } }) {
+  // Create a server-side Supabase client
+  const supabase = createServerComponentClient({ cookies });
 
-export default function UserProfilePage({ params }: { params: { id: string } }) {
+  // Get the currently logged-in user
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    return <p>Please log in to see your profile.</p>;
+  }
   return (
     <main className="py-8 px-[12vw] bg-bg md:px-[16vw] text-white">
       <ProfileTabs />

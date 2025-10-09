@@ -6,6 +6,7 @@ import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ca } from 'zod/locales';
 import { signInWithEmail } from '../auth-functions';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -22,6 +23,7 @@ import { signInWithEmail } from '../auth-functions';
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter();
   const [formData, setFormData ] = useState({
       email: "",
       password: "",
@@ -45,7 +47,10 @@ async function handleSubmitAsync(e: React.FormEvent<HTMLFormElement>) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
   signInWithEmail(email, password);
+  router.push("/trending-ideas");
 }
+
+
   return (
     <div className="flex flex-col justify-center w-full  px-2 py-2 gap-4">
             <form 

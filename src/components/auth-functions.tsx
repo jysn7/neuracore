@@ -10,7 +10,6 @@ export const signInWithEmail = async (email: string, password: string) => {
   else if (!error && data){
     console.log("Sign-in successful:", data);
   }
-  //return { data, error };
 }
 
 export const signUpWithEmail = async (email: string, password: string) => {
