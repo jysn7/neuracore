@@ -1,12 +1,42 @@
 "use client";
-import { BellIcon, HamburgerIcon, LucideHamburger, MailIcon, Menu, UserRound, X } from 'lucide-react';
+import { BellIcon, HamburgerIcon, LogOut, LucideHamburger, MailIcon, Menu, MoonIcon, Plus, Settings, SunIcon, UserRound, X } from 'lucide-react';
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark'); // default theme
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const initialTheme = storedTheme || 'dark';
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+  }, []);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <nav className='h-[8vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray flex justify-between px-[12vw] items-center bg-bg '>
+      <div className='flex items-end gap-4'>
       <Link href="/trending-ideas" className=''>
         <svg width="121" height="25" viewBox="0 0 121 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M85.5971 21.1203L81.9602 23.9516L81.7043 24.1541H74.4346L74.6946 23.9516L76.2014 22.7772L79.5741 20.1451L81.3368 18.7716L81.9602 18.2857L84.3463 20.1451L85.5971 21.1203Z" fill="#B8B8B8"/>
@@ -22,42 +52,103 @@ const Navbar = () => {
           <path d="M55.2715 19.8515L60.6505 7.92915H62.3967L67.7757 19.8515H65.5671L61.5256 10.234L57.4842 19.8515H55.2756H55.2715ZM57.7484 17.2362V15.6468H65.4226V17.2362H57.7484Z" fill="#CCCCCC"/>
         </svg>
       </Link>
-      <div className='flex p-2 gap-6'>
+
+      <div className=" flex items-center gap-2">
+        {/* Dashboard */}
         <Link 
-          href="/dashboard(user)" 
-          className='group hidden md:flex transition-all duration-400 hover:text-btn-primary-hover text-text-secondary items-center gap-1'
-        >
-          <svg 
-            width="17" 
-            height="19" 
-            viewBox="0 0 17 17" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-[#2d1c1c] group-hover:stroke-red-500 transition-colors duration-300"
+            href="/dashboard(user)" 
+            className='group hidden md:flex transition-all duration-400 hover:text-btn-primary-hover text-text-secondary items-center gap-1'
           >
-            <path 
-              d="M2.23047 2.5V5.83333H5.5638M2.23047 8.5L6.23047 4.5H11.5638L14.2305 7.16667V10.5H5.5638L2.89714 7.83333L2.23047 8.5Z" 
-              strokeWidth="0.666667"
-            />
-          </svg>
-          <h3 className='text-xs  font-semibold'>Dashboard</h3>
+            <svg 
+              width="17" 
+              height="19" 
+              viewBox="0 0 17 17" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-[#fff] group-hover:stroke-red-500 transition-colors duration-300"
+            >
+              <path 
+                d="M2.23047 2.5V5.83333H5.5638M2.23047 8.5L6.23047 4.5H11.5638L14.2305 7.16667V10.5H5.5638L2.89714 7.83333L2.23047 8.5Z" 
+                strokeWidth="0.666667"
+              />
+            </svg>
+            <h3 className='text-xs  font-semibold'>Dashboard</h3>
+          </Link>
+          <Link
+            href="/leaderboard"
+          >
+            <h3 className='text-xs text-text-secondary hover:text-btn-primary-hover font-semibold'>Leaderboard</h3>
+          </Link>
+      </div>
+
+      </div>
+      <div className='flex p-2 gap-4'>
+
+        {/* Create post Icon */}
+        <Link href="/profile#notifications" className='hidden md:flex items-center justify-center'>
+          <div className='text-bg-dark-gray bg-text-primary transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2'>
+            <Plus size={19} />
+          </div>   
         </Link>
 
+        {/* Subscribe button */}
         <Link href="/payment" className="hidden md:flex  transition-all duration-400 hover:text-white hover:bg-btn-primary-hover gap-1 text-xs hover:border-btn-primary-hover font-semibold items-center text-brand-red border-2 px-2.5 py-0.5 rounded-lg">
           <MailIcon size={17}/>
           Subscribe
         </Link>
-        <Link href="/profile#notifications" className='hidden md:block relative z-3 top-3.5 text-text-secondary '>
-          <div className='absolute z-4 text-white bg-red-500 px-1.5 flex justify-center items-center  text-[10px] rounded-full left-3  -top-2'>
-            <p className='pt-0.5'>4</p>
-          </div>
-          <BellIcon size={19} />
-        </Link>
-        <Link href="/profile" className="hidden md:flex items-center justify-center">
-          <div className='text-white bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2'>
-            <UserRound size={21}/>
-          </div>
-        </Link>
+
+        
+
+        
+
+        {/* Dark Mode Icon */}
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="hidden md:flex items-center justify-center text-white bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2"
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? <SunIcon size={19} /> : <MoonIcon size={19} />}
+        </button>
+
+        {/* Profile Icon + Dropdown */}
+        <div className="hidden md:flex items-center relative justify-center" ref={profileRef}>
+          <button
+            onClick={() => setIsProfileOpen((prev) => !prev)}
+            className="relative text-white cursor-pointer bg-bg-dark-gray transition-all duration-400 border-transparent border-3 hover:border-btn-primary-hover rounded-full p-2"
+          >
+            <UserRound size={21} />
+            <div className="absolute z-4 text-white bg-red-500 px-1.5 flex justify-center items-center text-[10px] rounded-full -right-1 -top-1">
+              <p className="pt-0.5">4</p>
+            </div>
+          </button>
+
+          {/* Dropdown Menu */}
+          {isProfileOpen && (
+            <div className="absolute right-0 top-9 mt-3 w-44 rounded-lg border border-bg-gray bg-bg-dark shadow-lg z-50">
+              <Link
+                href="/profile#notifications"
+                className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:text-white hover:bg-bg-dark-gray transition-all"
+              >
+                <BellIcon size={16} /> Notifications
+              </Link>
+              <Link
+                href="/settings"
+                className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:text-white hover:bg-bg-dark-gray transition-all"
+              >
+                <Settings size={16} /> Settings
+              </Link>
+              <Link
+                href="/logout"
+                className="flex items-center gap-2 px-4 py-2 text-sm text-red-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+              >
+                <LogOut size={16} /> Sign Out
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Hamburger Menu for small screens */}
         <button onClick={()=>{setIsMenuOpen(!isMenuOpen)}} className='text-text-primary md:hidden block'>
           <Menu size={19}/>
         </button>

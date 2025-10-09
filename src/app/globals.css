@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* 
-   THEME VARIABLES
- */
+/* ─────────────────────────────────────────────── */
+/* THEME VARIABLES (Default = Dark Mode)           */
+/* ─────────────────────────────────────────────── */
 @theme {
   /* Brand Colors */
   --color-brand-black: #000000;
@@ -16,38 +16,103 @@
   --color-btn-secondary-hover: #233045;
   --color-btn-text: var(--color-brand-white);
 
-  /*  Backgrounds */
+  /* Backgrounds (Dark Mode Default) */
   --color-bg: #141414;
   --color-bg-dark: #1e1e1e;
   --color-bg-light: #f9fafb;
   --color-bg-gray: #2c2c2c;
   --color-bg-dark-gray: #181B20;
-  --color-bg-overlay: rgba(0,0,0,0.4);
+  --color-bg-overlay: rgba(0, 0, 0, 0.4);
 
-  /*  Text */
+  /* Text */
   --color-text-primary: #ffffff;
   --color-text-dark: #000000;
-  --color-text-secondary: #757575; /*for subtext*/
-  --color-text-green: #22C55E; /* for analytics */
+  --color-text-secondary: #757575;
+  --color-text-green: #22C55E;
 
-  /*  Borders */
+  /* Borders */
   --color-border-secondary: #1D283A;
   --color-border-primary: #DF1616;
 
-  /*  Fonts */
+  /* Fonts */
   --font-display: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
 }
 
-/*
-   COMPONENT UTILITY CLASSES
-*/
+/* ─────────────────────────────────────────────── */
+/* LIGHT MODE OVERRIDES                            */
+/* ─────────────────────────────────────────────── */
+[data-theme='light'] {
+  /* Keep brand + button colors the same */
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-red: #DF1616;
 
+  --color-btn-primary: var(--color-brand-red);
+  --color-btn-primary-hover: #b91919;
+  --color-btn-secondary: #1D283A;
+  --color-btn-secondary-hover: #233045;
+  --color-btn-text: var(--color-brand-white);
+
+  /* 🌤 Backgrounds */
+  --color-bg: #f5f6f7;             /* main app background */
+  --color-bg-dark: #ffffff;        /* cards, panels */
+  --color-bg-light: #ffffff;       /* white surfaces */
+  --color-bg-gray: #d8dadd;        /* light gray UI elements */
+  --color-bg-dark-gray: #bdbcbc;   /* for subtle contrast zones */
+  --color-bg-overlay: rgba(255, 255, 255, 0.6);
+
+  /* ✍️ Text */
+  --color-text-primary: #111111;   /* main text */
+  --color-text-dark: #000000;      /* pure black */
+  --color-text-secondary: #4b5563; /* muted text */
+  --color-text-green: #15803d;     /* accent green */
+
+  /* 🧱 Borders */
+  --color-border-secondary: #d1d5db; /* neutral border */
+  --color-border-primary: #DF1616;   /* red border accent */
+
+  /* Fonts (unchanged) */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ─────────────────────────────────────────────── */
+/* GLOBAL UTILITIES                                */
+/* ─────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Optional: smoother transitions for theme switch */
+:root, [data-theme='light'], [data-theme='dark'] {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ─────────────────────────────────────────────── */
+/* EDITOR STYLES (Tiptap etc.)                     */
+/* ─────────────────────────────────────────────── */
+.editor h1 {
+  @apply text-2xl font-bold;
+}
+
+.editor h2 {
+  @apply text-xl font-bold;
+}
+
+.editor h3 {
+  @apply text-lg font-bold;
 }
