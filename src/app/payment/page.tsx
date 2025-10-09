@@ -1,0 +1,34 @@
+import React from 'react';
+import PaymentForm from '@/components/Payment';
+import OrderSummary from '@/components/OrderSummary';
+import { Lock, ShieldCheck } from 'lucide-react';
+
+const PaymentPage = () => {
+  return (
+    <div className="bg-gray-100 min-h-screen p-4 sm:p-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex items-center gap-3 mb-6">
+          <svg width="24" height="24" viewBox="0 0 121 25" /* ...logo path... */ ></svg>
+          <h1 className="text-2xl font-bold">Secure Checkout</h1>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <PaymentForm />
+          </div>
+
+          <div>
+            <OrderSummary />
+          </div>
+        </div>
+        
+        <div className="flex justify-center items-center gap-4 mt-8 text-sm text-gray-500">
+          <span className="flex items-center gap-1"><ShieldCheck size={16} /> SSL Secured</span>
+          <span className="flex items-center gap-1"><Lock size={16} /> 256-bit Encryption</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PaymentPage;
