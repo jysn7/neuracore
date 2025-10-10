@@ -6,7 +6,7 @@ import { Lock, ShieldCheck } from 'lucide-react';
 
 const PaymentPage = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-4 sm:p-8">
+    <div className="bg-bg min-h-screen p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
           <Image
@@ -15,7 +15,7 @@ const PaymentPage = () => {
             width={28}
             height={28}
           />
-          <h1 className="text-2xl font-bold">Secure Checkout</h1>
+          <h1 className="text-2xl text-text-primary font-bold">Secure Checkout</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
