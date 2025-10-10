@@ -8,7 +8,7 @@ import { Eye, Heart, MessageSquare, Users } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
-    <main className="py-8 px-[12vw] md:px-[16vw] bg-bg">
+    <main className="py-8 px-[8vw] md:px-[16vw] bg-bg">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Views"

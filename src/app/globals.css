@@ -55,21 +55,21 @@
   --color-btn-text: var(--color-brand-white);
 
   /* 🌤 Backgrounds */
-  --color-bg: #f5f6f7;             /* main app background */
-  --color-bg-dark: #ffffff;        /* cards, panels */
+  --color-bg: #FFFFFF;             /* main app background */
+  --color-bg-dark: #FAFAFA;        /* cards, panels */
   --color-bg-light: #ffffff;       /* white surfaces */
-  --color-bg-gray: #d8dadd;        /* light gray UI elements */
+  --color-bg-gray: #F5F5F5;        /* light gray UI elements */
   --color-bg-dark-gray: #bdbcbc;   /* for subtle contrast zones */
   --color-bg-overlay: rgba(255, 255, 255, 0.6);
 
   /* ✍️ Text */
   --color-text-primary: #111111;   /* main text */
   --color-text-dark: #000000;      /* pure black */
-  --color-text-secondary: #4b5563; /* muted text */
+  --color-text-secondary: #737373; /* muted text */
   --color-text-green: #15803d;     /* accent green */
 
   /* 🧱 Borders */
-  --color-border-secondary: #d1d5db; /* neutral border */
+  --color-border-secondary: #E6E6E6; /* neutral border */
   --color-border-primary: #DF1616;   /* red border accent */
 
   /* Fonts (unchanged) */

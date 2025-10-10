@@ -11,7 +11,7 @@ const SubmitIdeaPage = () => {
   const [content, setContent] = useState("");
 
   return (
-    <main className="p-8 text-white py-8 px-[12vw] md:px-[16vw] bg-[#141414] min-h-screen">
+    <main className="p-8 text-white py-8 px-[8vw] md:px-[16vw] bg-[#141414] min-h-screen">
       <h1 className="text-3xl font-bold mb-8">Submit Idea</h1>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

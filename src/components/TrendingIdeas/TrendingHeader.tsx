@@ -11,7 +11,7 @@ interface Props {
 const TrendingHeader: React.FC<Props> = ({ query, setQuery, selected, setSelected }) => {
     
   return (
-    <div className="flex flex-col w-full px-[12vw] md:px-[16vw] z-20 shadow-lg py-4 sticky top-[8vh] bg-bg left-0 right-0">
+    <div className="flex flex-col w-full px-[8vw] md:px-[16vw] z-20 shadow-lg py-4 sticky top-[8vh] bg-bg left-0 right-0">
       <div className="text-text-primary flex items-center justify-start gap-2">
         <TrendingUp size={25} />
         <h1 className="text-lg md:text-2xl font-semibold">Trending Ideas</h1>
