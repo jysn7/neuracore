@@ -21,7 +21,7 @@ interface Props {
 
 const IdeaGrid: React.FC<Props> = ({ ideas }) => {
   return (
-    <div className="grid px-[12vw] md:px-[16vw] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-6 gap-3 md:gap-6">
+    <div className="grid px-[8vw] md:px-[16vw] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-6 gap-3 md:gap-6">
       {ideas.length > 0 ? (
         ideas.map((idea) => <IdeaCard key={idea.id} idea={idea} />)
       ) : (
