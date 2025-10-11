@@ -17,7 +17,7 @@ export default async function UserProfilePage({ params }: { params: { id: string
     return <p>Please log in to see your profile.</p>;
   }
   return (
-    <main className="py-8 px-[12vw] bg-bg md:px-[16vw] text-white">
+    <main className="py-8 px-[8vw] bg-bg md:px-[16vw] text-white">
       <ProfileTabs />
 
       <div id="profile" className="mt-8">
