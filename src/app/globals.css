@@ -60,7 +60,7 @@
   --color-bg-light: #ffffff;       /* white surfaces */
   --color-bg-gray: #F5F5F5;        /* light gray UI elements */
   --color-bg-dark-gray: #bdbcbc;   /* for subtle contrast zones */
-  --color-bg-overlay: rgba(255, 255, 255, 0.6);
+  --color-bg-overlay: rgb(255, 255, 255);
 
   /* ✍️ Text */
   --color-text-primary: #111111;   /* main text */
