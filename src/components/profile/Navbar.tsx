@@ -185,7 +185,7 @@ const Navbar = () => {
               </div>
 
               <div className="flex flex-col mb-6 mt-4">
-                <Link href="/logout" className="flex items-center gap-3 p-4 text-red-500 hover:text-red-600 hover:bg-red-500/10 rounded-r-full">
+                <Link href="/logout" className="flex items-center gap-3 p-4 text-brand-red hover:bg-brand-red hover:text-white rounded-r-full">
                   <LogOut size={16}/> Sign Out
                 </Link>
               </div>

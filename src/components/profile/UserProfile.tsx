@@ -8,8 +8,8 @@ interface StatItemProps {
 
 const StatItem: React.FC<StatItemProps> = ({ value, label }) => (
   <div className="text-center flex-1 min-w-[60px]">
-    <p className="text-lg md:text-xl font-bold text-white">{value}</p>
-    <p className="text-xs text-gray-400">{label}</p>
+    <p className="text-sm md:text-lg  font-bold text-text-primary">{value}</p>
+    <p className="text-xs text-text-secondary">{label}</p>
   </div>
 );
 

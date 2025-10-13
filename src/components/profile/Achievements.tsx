@@ -17,7 +17,7 @@ const AchievementItem: React.FC<AchievementItemProps> = ({
   <div className="flex items-start gap-3">
     <div className="text-gray-400 mt-1">{icon}</div>
     <div>
-      <h4 className={`font-semibold ${isHighlighted ? "text-red-500" : "text-white"}`}>
+      <h4 className={`font-semibold ${isHighlighted ? "text-brand-red" : "text-text-primary"}`}>
         {title}
       </h4>
       <p className="text-xs text-gray-500">{description}</p>
