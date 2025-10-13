@@ -7,15 +7,7 @@ import AccountSettings from '@/components/profile/AccountSettings';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 export default async function UserProfilePage({ params }: { params: { id: string } }) {
-  // Create a server-side Supabase client
-  const supabase = createServerComponentClient({ cookies });
 
-  // Get the currently logged-in user
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    return <p>Please log in to see your profile.</p>;
-  }
   return (
     <main className="py-8 px-[8vw] bg-bg md:px-[16vw] text-white">
       <ProfileTabs />
