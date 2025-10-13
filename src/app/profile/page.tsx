@@ -24,9 +24,9 @@ export default async function UserProfilePage({ params }: { params: { id: string
         <UserProfile />
       </div>
 
-      <div className="mt-8 bg-[#1C1C1C] p-8 rounded-lg border border-gray-700">
-        <h3 className="text-lg font-semibold text-white mb-4">About</h3>
-        <p className="text-sm text-gray-400 leading-relaxed">
+      <div className="mt-8 bg-bg p-8 rounded-lg border border-border-secondary">
+        <h3 className="text-lg font-semibold text-text-primary mb-4">About</h3>
+        <p className="text-sm text-text-secondary leading-relaxed">
           Senior AI Engineer at TechCorp with 8+ years in machine learning and fintech. Passionate about creating innovative solutions that make technology accessible to everyone.
         </p>
       </div>

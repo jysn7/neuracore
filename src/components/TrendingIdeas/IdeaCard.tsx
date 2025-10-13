@@ -19,22 +19,22 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
   return (
     <Link
       href="/idea"
-      className="rounded-lg hover:border-2 hover:border-border-secondary hover:scale-102 transform-all duration-300 bg-bg-dark shadow-lg overflow-hidden"
+      className="rounded-lg border-1 border-border-secondary  hover:scale-102 transform-all duration-300 bg-bg-dark overflow-hidden"
     >
       <div className="bg-bg-dark-gray relative flex justify-center items-center text-text-primary font-semibold text-sm h-40 sm:h-44 w-full">
         <img src={idea.imageUrl} className="w-full h-full object-cover" alt="cover-img" />
-        <div className="bg-red-600 left-1 top-2 rounded gap-1 font-semibold text-[10px] p-1 absolute flex">
-          <TrendingUp size={12} className="m-auto text-white" />
+        <div className="bg-red-600 left-1 text-white top-2 rounded gap-1 font-semibold text-[10px] p-1 absolute flex">
+          <TrendingUp size={12} className="m-auto " />
           <p>Trending</p>
         </div>
-        <div className="right-1 bg-black/40 top-2 rounded gap-1 font-semibold text-[10px] sm:text-xs p-1 absolute flex">
+        <div className="right-1 bg-black/40 top-2 rounded gap-1 text-white font-semibold text-[10px] sm:text-xs p-1 absolute flex">
           <Star size={12} className="text-yellow-400 fill-current" />
           <p>{idea.rating}</p>
         </div>
       </div>
 
-      <div className="px-4 sm:px-5 py-2">
-        <div className="bg-border-secondary text-xs md:my-3 my-1 rounded w-fit font-semibold text-white px-2 py-1">
+      <div className="px-4 sm:px-5 mb-4 py-2">
+        <div className="bg-btn-secondary text-xs md:my-3 my-1 rounded w-fit font-semibold text-white px-2 py-1">
           <p>{idea.category}</p>
         </div>
         <h1 className="text-text-primary text-sm sm:text-base md:text-xl font-semibold">
