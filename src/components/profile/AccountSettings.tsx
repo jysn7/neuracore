@@ -4,14 +4,14 @@ import SettingsToggle from './Settings';
 
 const AccountSettings = () => {
   return (
-    <div className="bg-[#242424] p-8 rounded-lg border border-gray-700">
+    <div className="bg-bg-dark p-8 rounded-lg border border-border-secondary">
       <div className="flex items-center gap-3 mb-6">
-        <Settings className="text-gray-400" />
-        <h3 className="text-lg font-semibold text-white">Account Settings</h3>
+        <Settings className="text-text-secondary" />
+        <h3 className="text-lg font-semibold text-text-primary">Account Settings</h3>
       </div>
 
       <div>
-        <h4 className="text-md font-semibold text-white mb-2">Notification Preferences</h4>
+        <h4 className="text-md font-semibold text-text-primary mb-2">Notification Preferences</h4>
         <SettingsToggle label="Email Notifications" description="Receive notifications via email" />
         <SettingsToggle label="New Followers" description="Get notified when someone follows you" />
         <SettingsToggle label="Comments on Ideas" description="Get notified when someone comments on your ideas" />
@@ -20,7 +20,7 @@ const AccountSettings = () => {
       </div>
 
       <div className="mt-8">
-        <h4 className="text-md font-semibold text-white mb-2">Privacy Settings</h4>
+        <h4 className="text-md font-semibold text-text-primary mb-2">Privacy Settings</h4>
         <SettingsToggle label="Public Profile" description="Make your profile visible to everyone" />
         <SettingsToggle label="Show in Search" description="Allow your profile to appear in search results" />
       </div>

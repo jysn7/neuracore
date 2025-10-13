@@ -7,33 +7,37 @@ interface StatItemProps {
 }
 
 const StatItem: React.FC<StatItemProps> = ({ value, label }) => (
-  <div className="text-center">
-    <p className="text-xl font-bold text-white">{value}</p>
+  <div className="text-center flex-1 min-w-[60px]">
+    <p className="text-lg md:text-xl font-bold text-white">{value}</p>
     <p className="text-xs text-gray-400">{label}</p>
   </div>
 );
 
 const UserProfile = () => {
   return (
-    <div className="bg-[#1C1C1C] p-8 rounded-lg border border-gray-700">
-      <div className="flex flex-col md:flex-row items-center gap-8">
-        <div className="flex-shrink-0 self-start w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center text-white text-3xl font-bold">
+    <div className="bg-bg-dark p-6 sm:p-8 rounded-lg border border-border-secondary w-full">
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 w-full">
+        {/* Avatar */}
+        <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-gray-800 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold">
           FM
         </div>
 
+        {/* User Info */}
         <div className="flex-grow w-full">
-          <div className="flex justify-between items-start mb-4">
+          {/* Name & Edit */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 sm:gap-4 w-full">
             <div>
-              <h2 className="text-2xl font-bold text-white">Francie Monquer</h2>
-              <p className="text-gray-400">francie@neuracore.com</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Francie Monquer</h2>
+              <p className="text-text-secondary text-sm sm:text-base">francie@neuracore.com</p>
             </div>
-            <button className="flex cursor-pointer items-center gap-2 text-sm text-gray-400 border border-gray-600 px-4 py-2 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-colors">
+            <button className="flex cursor-pointer bg-bg-gray items-center gap-2 text-sm hover:text-text-secondary border border-border-secondary px-3 sm:px-4 py-2 rounded-lg hover:bg-bg-dark-gray text-text-primary transition-colors">
               <Edit size={16} />
               Edit Profile
             </button>
           </div>
 
-          <div className="flex justify-around my-6">
+          {/* Stats */}
+          <div className="flex flex-wrap justify-between my-4 gap-4 w-full">
             <StatItem value="12" label="Ideas" />
             <StatItem value="45.3K" label="Views" />
             <StatItem value="3.4K" label="Likes" />
@@ -41,7 +45,8 @@ const UserProfile = () => {
             <StatItem value="342" label="Following" />
           </div>
 
-          <div className="flex items-center justify-center md:justify-start gap-6 text-sm text-gray-400">
+          {/* Contact / Info */}
+          <div className="flex flex-wrap justify-start gap-4 sm:gap-6 mt-4 text-sm text-text-secondary w-full">
             <span className="flex items-center gap-2"><MapPin size={16} /> San Francisco, CA</span>
             <span className="flex items-center gap-2"><LinkIcon size={16} /> franklin-dev</span>
             <span className="flex items-center gap-2"><CalendarDays size={16} /> Joined April 2025</span>
