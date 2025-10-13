@@ -13,10 +13,10 @@ const UserAchievements = () => {
   ];
 
   return (
-    <div className="bg-[#242424]  p-8 rounded-lg border border-gray-700">
+    <div className="bg-bg-dark  p-8 rounded-lg border border-border-secondary">
       <div className="flex items-center gap-3 mb-6">
-        <Award className="text-gray-400" />
-        <h3 className="text-lg font-semibold text-white">Your Achievements</h3>
+        <Award className="text-text-secondary" />
+        <h3 className="text-lg font-semibold text-text-primary">Your Achievements</h3>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {achievements.map((ach) => (

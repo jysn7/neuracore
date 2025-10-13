@@ -50,10 +50,10 @@ const Notifications = () => {
   ];
 
   return (
-    <div className="bg-[#242424] p-8 rounded-lg border border-gray-700">
+    <div className="bg-bg-dark p-8 rounded-lg border border-border-secondary">
       <div className="flex items-center gap-3 mb-4">
-        <Bell className="text-gray-400" />
-        <h3 className="text-lg font-semibold text-white">Notifications</h3>
+        <Bell className="text-text-secondary" />
+        <h3 className="text-lg font-semibold text-text-primary">Notifications</h3>
       </div>
       <div>
         {notificationData.map((item, index) => (

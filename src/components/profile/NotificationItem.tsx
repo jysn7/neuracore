@@ -10,14 +10,14 @@ interface NotificationItemProps {
 
 const NotificationItem: React.FC<NotificationItemProps> = ({ icon, text, time, isUnread }) => {
   return (
-    <div className="flex items-center gap-4 p-4 border-b border-gray-700">
-      <span className="text-lg">{icon}</span>
-      <div className="flex-grow">
-        <p className="text-sm text-white">{text}</p>
-        <p className="text-xs text-gray-500 mt-1">{time}</p>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 p-2 md:p-4 border-b border-border-secondary w-full">
+      <span className="text-lg flex-shrink-0">{icon}</span>
+      <div className="flex-grow min-w-0">
+        <p className="text-sm text-text-primary break-words">{text}</p>
+        <p className="text-xs text-text-secondary mt-1">{time}</p>
       </div>
       {isUnread && (
-        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+        <div className="w-2 h-2 bg-brand-red rounded-full flex-shrink-0 mt-1 sm:mt-0"></div>
       )}
     </div>
   );
