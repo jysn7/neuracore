@@ -1,11 +1,27 @@
+// app/api/ideas/create/route.ts
 import { NextResponse } from "next/server";
-import { supabase } from "../../../supabase-client";
+import { supabase } from "@/app/supabase-client";
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
-    const author = formData.get("author") as string;
+    // Get the currently logged-in user
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (!user || userError) {
+      return NextResponse.json(
+        { error: "Not authenticated" },
+        { status: 401 }
+      );
+    }
+
+    const author = user.id;
+
+    // Get fields from form data
     const title = formData.get("title") as string;
     const summary = formData.get("summary") as string;
     const content = formData.get("content") as string;
@@ -15,9 +31,11 @@ export async function POST(req: Request) {
 
     let coverImgUrl: string | null = null;
 
-    if (coverImg) {
+    // Handle cover image upload
+    if (coverImg && coverImg instanceof File) {
       const filePath = `idea-covers/${Date.now()}-${coverImg.name}`;
-      const { data, error: uploadError } = await supabase.storage
+
+      const { error: uploadError } = await supabase.storage
         .from("idea-covers")
         .upload(filePath, coverImg);
 
@@ -30,6 +48,7 @@ export async function POST(req: Request) {
       coverImgUrl = publicUrlData.publicUrl;
     }
 
+    // Insert idea into database
     const { data, error } = await supabase.from("ideas").insert([
       {
         author,
@@ -39,6 +58,11 @@ export async function POST(req: Request) {
         tags,
         category,
         cover_img: coverImgUrl,
+        likers: [],
+        collaborators: [],
+        comments: [],
+        share_count: 0,
+        view_count: 0,
       },
     ]);
 
