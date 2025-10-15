@@ -1,6 +1,9 @@
 // src/components/submitIdea/SlashMenu.tsx
 import { Editor } from "@tiptap/react";
-import Suggestion, { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
+import Suggestion, {
+  SuggestionOptions,
+  SuggestionProps,
+} from "@tiptap/suggestion";
 import { Extension } from "@tiptap/core";
 
 interface SlashItem {
@@ -14,7 +17,13 @@ export const SlashMenu = Extension.create({
     return {
       char: "/",
       startOfLine: true,
-      items: ({ query, editor }: { query: string; editor: Editor }): SlashItem[] => [
+      items: ({
+        query,
+        editor,
+      }: {
+        query: string;
+        editor: Editor;
+      }): SlashItem[] => [
         { label: "Continue text", type: "continue" },
         { label: "Shorten text", type: "shorten" },
         { label: "Rewrite text", type: "rewrite" },
@@ -32,7 +41,8 @@ export const SlashMenu = Extension.create({
         return {
           onStart: (props: SuggestionProps<SlashItem>) => {
             popup = document.createElement("div");
-            popup.className = "absolute bg-white border rounded-md shadow-lg z-50";
+            popup.className =
+              "absolute bg-white border rounded-md shadow-lg z-50";
             popup.style.padding = "0.5rem";
 
             const rect = props.clientRect?.();
@@ -59,7 +69,8 @@ export const SlashMenu = Extension.create({
             if (!popup) return;
 
             Array.from(popup.children).forEach((child, idx) => {
-              (child as HTMLElement).className = idx === currentIndex ? "bg-gray-200" : "";
+              (child as HTMLElement).className =
+                idx === currentIndex ? "bg-gray-200" : "";
             });
           },
 

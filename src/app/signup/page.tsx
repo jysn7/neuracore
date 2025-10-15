@@ -1,26 +1,24 @@
 "use client";
-import GetReady from '@/components/signup/GetReady';
-import LeftSide from '@/components/signup/LeftSide';
-import ServiceCards from '@/components/signup/ServiceCards';
-import SignupForm from '@/components/signup/SignUpForm';
-import React, { useState } from 'react';
+import GetReady from "@/components/signup/GetReady";
+import LeftSide from "@/components/signup/LeftSide";
+import ServiceCards from "@/components/signup/ServiceCards";
+import SignupForm from "@/components/signup/SignUpForm";
+import React, { useState } from "react";
 
 const Signup = () => {
-  
   return (
-    <div className='max-w-screen'>      
-    <section className="flex flex-col md:flex-row min-h-screen w-full justify-center items-center">
-        <div className="flex flex-col md:pt-2 py-12 md:flex-row flex-1 px-2 gap-8 max-w-[840px] w-full">   
+    <div className="max-w-screen">
+      <section className="flex flex-col md:flex-row min-h-screen w-full justify-center items-center">
+        <div className="flex flex-col md:pt-2 py-12 md:flex-row flex-1 px-2 gap-8 max-w-[840px] w-full">
           <LeftSide />
           <SignupForm />
         </div>
-    </section>
-    <section className="flex flex-col mt-8 min-h-screen w-full justify-center items-center">
-      <ServiceCards />
-      <GetReady />
-    </section>
+      </section>
+      <section className="flex flex-col mt-8 min-h-screen w-full justify-center items-center">
+        <ServiceCards />
+        <GetReady />
+      </section>
     </div>
-    
   );
 };
 

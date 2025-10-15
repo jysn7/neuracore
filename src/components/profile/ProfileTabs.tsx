@@ -21,9 +21,10 @@ const ProfileTabs = () => {
             onClick={() => setActiveTab(tab.name)}
             className={`
               inline-block text-center py-2.5 px-6 rounded-md text-sm font-medium transition-colors duration-300 flex-shrink-0 w-full md:w-[22%]
-              ${activeTab === tab.name
-                ? "bg-bg-gray text-text-primary"
-                : "text-text-secondary hover:bg-bg-gray hover:text-text-primary"
+              ${
+                activeTab === tab.name
+                  ? "bg-bg-gray text-text-primary"
+                  : "text-text-secondary hover:bg-bg-gray hover:text-text-primary"
               }
             `}
           >

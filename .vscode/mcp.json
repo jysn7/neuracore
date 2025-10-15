@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"my-mcp-server-d5987158": {
+			"url": "https://mcp.supabase.com/mcp?project_ref=kmontdruuvtofryjcaxf&read_only=true",
+			"type": "http"
+		},
+		"my-mcp-server-79cedc59": {
+			"url": "https://mcp.supabase.com/mcp?project_ref=kmontdruuvtofryjcaxf&read_only=true",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}

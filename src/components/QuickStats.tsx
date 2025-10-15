@@ -18,7 +18,10 @@ const QuickStats = () => {
           <span>85%</span>
         </div>
         <div className="w-full bg-[var(--color-bg-gray)] rounded-full h-2">
-          <div className="bg-[var(--color-brand-red)] h-2 rounded-full" style={{ width: '85%' }}></div>
+          <div
+            className="bg-[var(--color-brand-red)] h-2 rounded-full"
+            style={{ width: '85%' }}
+          ></div>
         </div>
       </div>
     </div>

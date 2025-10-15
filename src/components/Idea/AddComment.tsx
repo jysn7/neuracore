@@ -15,7 +15,9 @@ const AddComment: React.FC<AddCommentProps> = ({ totalComments }) => {
         {/* Avatar */}
         <div className="w-14 md:w-18 flex items-start justify-center">
           <div className="bg-border-secondary h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full">
-            <p className="text-[9px] md:text-[10px] text-white font-semibold">You</p>
+            <p className="text-[9px] md:text-[10px] text-white font-semibold">
+              You
+            </p>
           </div>
         </div>
 

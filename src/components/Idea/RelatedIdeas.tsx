@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface RelatedIdea {
   id: string | number;
@@ -14,7 +14,9 @@ interface RelatedIdeasProps {
 const RelatedIdeas: React.FC<RelatedIdeasProps> = ({ ideas }) => {
   return (
     <div className="w-full md:w-[80%] flex-col px-3 my-4 rounded-lg py-4 flex bg-bg-dark border border-border-secondary">
-      <h1 className="text-lg pl-4 mb-6 font-semibold text-text-primary">Related Ideas</h1>
+      <h1 className="text-lg pl-4 mb-6 font-semibold text-text-primary">
+        Related Ideas
+      </h1>
 
       {ideas.map((idea) => (
         <div
@@ -23,7 +25,15 @@ const RelatedIdeas: React.FC<RelatedIdeasProps> = ({ ideas }) => {
         >
           <div className="w-28 flex justify-center">
             <div className="w-18 h-18 rounded-lg justify-center items-center flex text-white text-xs bg-border-secondary">
-              {idea.image ? <img src={idea.image} alt={idea.title} className="w-full h-full rounded-lg object-cover" /> : 'pic'}
+              {idea.image ? (
+                <img
+                  src={idea.image}
+                  alt={idea.title}
+                  className="w-full h-full rounded-lg object-cover"
+                />
+              ) : (
+                "pic"
+              )}
             </div>
           </div>
           <div className="text-text-secondary flex flex-col justify-center px-2">

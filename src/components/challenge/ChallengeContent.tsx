@@ -99,10 +99,20 @@ const ChallengeContent: React.FC<ChallengeContentProps> = ({ activeTab }) => {
               Objectives
             </h3>
             <ul className="pl-4 list-disc text-text-secondary text-sm space-y-1">
-              <li>Implement ML models for patient triage and care prioritization.</li>
-              <li>Integrate NLP for virtual symptom assessment and patient interaction.</li>
-              <li>Enhance hospital workflow efficiency using predictive analytics.</li>
-              <li>Ensure compliance with data security and patient privacy standards.</li>
+              <li>
+                Implement ML models for patient triage and care prioritization.
+              </li>
+              <li>
+                Integrate NLP for virtual symptom assessment and patient
+                interaction.
+              </li>
+              <li>
+                Enhance hospital workflow efficiency using predictive analytics.
+              </li>
+              <li>
+                Ensure compliance with data security and patient privacy
+                standards.
+              </li>
             </ul>
           </div>
         );
@@ -117,7 +127,9 @@ const ChallengeContent: React.FC<ChallengeContentProps> = ({ activeTab }) => {
               >
                 <div className="text-text-primary mt-1">{item.icon}</div>
                 <div>
-                  <h4 className="font-semibold text-text-primary text-sm">{item.title}</h4>
+                  <h4 className="font-semibold text-text-primary text-sm">
+                    {item.title}
+                  </h4>
                   <p className="text-xs text-text-secondary mt-1 leading-relaxed">
                     {item.desc}
                   </p>
@@ -137,7 +149,9 @@ const ChallengeContent: React.FC<ChallengeContentProps> = ({ activeTab }) => {
               >
                 <div className="text-text-primary mt-1">{criterion.icon}</div>
                 <div>
-                  <h4 className="font-semibold text-text-primary text-sm">{criterion.title}</h4>
+                  <h4 className="font-semibold text-text-primary text-sm">
+                    {criterion.title}
+                  </h4>
                   <p className="text-xs text-text-secondary mt-1 leading-relaxed">
                     {criterion.desc}
                   </p>
@@ -157,7 +171,9 @@ const ChallengeContent: React.FC<ChallengeContentProps> = ({ activeTab }) => {
               >
                 <div className="text-text-primary mt-1">{step.icon}</div>
                 <div>
-                  <h4 className="font-semibold text-text-primary text-sm">{step.title}</h4>
+                  <h4 className="font-semibold text-text-primary text-sm">
+                    {step.title}
+                  </h4>
                   <p className="text-xs text-text-secondary mt-1 leading-relaxed">
                     {step.desc}
                   </p>

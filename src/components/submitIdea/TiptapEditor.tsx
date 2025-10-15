@@ -6,7 +6,6 @@ import TextAlign from "@tiptap/extension-text-align";
 import Highlight from "@tiptap/extension-highlight";
 import MenuBar from "./Menu-bar";
 
-
 interface TiptapProps {
   content?: string;
   onChange?: (value: string) => void;

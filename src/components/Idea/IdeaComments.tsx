@@ -1,18 +1,18 @@
-import { ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
-import React from 'react'
+import { ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
+import React from "react";
 
 interface Comment {
-  id: string | number
-  initials: string
-  author: string
-  timeAgo: string
-  content: string
-  likes: number
-  dislikes: number
+  id: string | number;
+  initials: string;
+  author: string;
+  timeAgo: string;
+  content: string;
+  likes: number;
+  dislikes: number;
 }
 
 interface IdeaCommentsProps {
-  comments: Comment[]
+  comments: Comment[];
 }
 
 const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments }) => {
@@ -50,11 +50,11 @@ const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments }) => {
             {/* Actions */}
             <div className="flex mb-2 mt-4 gap-4 md:gap-6">
               <div className="flex gap-1 cursor-pointer font-semibold items-center text-text-secondary hover:text-text-primary text-[10px] md:text-xs">
-                <ThumbsUpIcon  size={14} />
+                <ThumbsUpIcon size={14} />
                 <p>{comment.likes}</p>
               </div>
               <div className="flex gap-1 cursor-pointer font-semibold items-center text-text-secondary hover:text-text-primary text-[10px] md:text-xs">
-                <ThumbsDownIcon    size={14} />
+                <ThumbsDownIcon size={14} />
                 <p>{comment.dislikes}</p>
               </div>
             </div>
@@ -62,7 +62,7 @@ const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default IdeaComments
+export default IdeaComments;

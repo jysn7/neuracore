@@ -7,17 +7,17 @@ import {
   Maximize,
   RotateCcw,
   RotateCw,
-} from "lucide-react"
-import Link from "next/link"
-import React, { useRef, useState, useEffect } from "react"
+} from "lucide-react";
+import Link from "next/link";
+import React, { useRef, useState, useEffect } from "react";
 
 type IdeaHeaderProps = {
-  mediaUrl?: string
-  categories: string[]
-  title: string
-  description: string
-  link: string
-}
+  mediaUrl?: string;
+  categories: string[];
+  title: string;
+  description: string;
+  link: string;
+};
 
 const IdeaHeaderVideo: React.FC<IdeaHeaderProps> = ({
   mediaUrl,
@@ -26,70 +26,68 @@ const IdeaHeaderVideo: React.FC<IdeaHeaderProps> = ({
   description,
   link,
 }) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   // Detect if mediaUrl is a video or image
-  const isVideo = mediaUrl
-    ? /\.(mp4|webm|ogg)$/i.test(mediaUrl)
-    : false
+  const isVideo = mediaUrl ? /\.(mp4|webm|ogg)$/i.test(mediaUrl) : false;
 
   const togglePlay = () => {
-    if (!videoRef.current) return
+    if (!videoRef.current) return;
     if (videoRef.current.paused) {
-      videoRef.current.play()
-      setIsPlaying(true)
+      videoRef.current.play();
+      setIsPlaying(true);
     } else {
-      videoRef.current.pause()
-      setIsPlaying(false)
+      videoRef.current.pause();
+      setIsPlaying(false);
     }
-  }
+  };
 
   const toggleMute = () => {
-    if (!videoRef.current) return
-    videoRef.current.muted = !videoRef.current.muted
-    setIsMuted(videoRef.current.muted)
-  }
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
+  };
 
   const toggleFullscreen = () => {
     if (videoRef.current) {
-      videoRef.current.requestFullscreen?.()
+      videoRef.current.requestFullscreen?.();
     }
-  }
+  };
 
   const handleProgress = () => {
-    if (!videoRef.current) return
+    if (!videoRef.current) return;
     const percent =
-      (videoRef.current.currentTime / videoRef.current.duration) * 100
-    setProgress(percent || 0)
-  }
+      (videoRef.current.currentTime / videoRef.current.duration) * 100;
+    setProgress(percent || 0);
+  };
 
   const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!videoRef.current) return
+    if (!videoRef.current) return;
     const newTime =
-      (parseFloat(e.target.value) / 100) * videoRef.current.duration
-    videoRef.current.currentTime = newTime
-    setProgress(parseFloat(e.target.value))
-  }
+      (parseFloat(e.target.value) / 100) * videoRef.current.duration;
+    videoRef.current.currentTime = newTime;
+    setProgress(parseFloat(e.target.value));
+  };
 
   const skip = (seconds: number) => {
-    if (!videoRef.current) return
+    if (!videoRef.current) return;
     videoRef.current.currentTime = Math.min(
       videoRef.current.duration,
-      Math.max(0, videoRef.current.currentTime + seconds)
-    )
-  }
+      Math.max(0, videoRef.current.currentTime + seconds),
+    );
+  };
 
   useEffect(() => {
-    const vid = videoRef.current
-    if (!vid) return
-    vid.addEventListener("timeupdate", handleProgress)
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.addEventListener("timeupdate", handleProgress);
     return () => {
-      vid.removeEventListener("timeupdate", handleProgress)
-    }
-  }, [])
+      vid.removeEventListener("timeupdate", handleProgress);
+    };
+  }, []);
 
   return (
     <>
@@ -196,7 +194,7 @@ const IdeaHeaderVideo: React.FC<IdeaHeaderProps> = ({
         {description}
       </p>
     </>
-  )
-}
+  );
+};
 
-export default IdeaHeaderVideo
+export default IdeaHeaderVideo;

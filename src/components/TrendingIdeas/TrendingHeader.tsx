@@ -8,7 +8,12 @@ interface Props {
   setSelected: (val: string) => void;
 }
 
-const TrendingHeader: React.FC<Props> = ({ query, setQuery, selected, setSelected }) => {
+const TrendingHeader: React.FC<Props> = ({
+  query,
+  setQuery,
+  selected,
+  setSelected,
+}) => {
   return (
     <div className="flex flex-col w-full z-20 sticky top-[8vh] bg-bg left-0 right-0">
       {/* Inner container with padding and border that doesn't touch screen edges */}

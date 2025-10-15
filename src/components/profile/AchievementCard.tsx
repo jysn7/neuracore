@@ -1,13 +1,18 @@
-import React from 'react';
+import React from "react";
 
 interface AchievementCardProps {
-  icon: string; 
+  icon: string;
   title: string;
   description: string;
   date: string;
 }
 
-const AchievementCard: React.FC<AchievementCardProps> = ({ icon, title, description, date }) => {
+const AchievementCard: React.FC<AchievementCardProps> = ({
+  icon,
+  title,
+  description,
+  date,
+}) => {
   return (
     <div className="bg-bg p-6 rounded-lg border border-border-secondary flex flex-col items-center text-center">
       <span className="text-3xl mb-3">{icon}</span>

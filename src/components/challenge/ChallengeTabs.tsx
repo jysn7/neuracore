@@ -5,7 +5,10 @@ interface ChallengeTabsProps {
   setActiveTab: (tab: string) => void;
 }
 
-const ChallengeTabs: React.FC<ChallengeTabsProps> = ({ activeTab, setActiveTab }) => {
+const ChallengeTabs: React.FC<ChallengeTabsProps> = ({
+  activeTab,
+  setActiveTab,
+}) => {
   const tabs = ["Overview", "Requirements", "Judging Criteria", "Submissions"];
 
   return (

@@ -1,11 +1,14 @@
 "use client";
 
+import React, { useState } from "react";
 import IdeaGrid from "@/components/TrendingIdeas/IdeaGrid";
 import TrendingHeader from "@/components/TrendingIdeas/TrendingHeader";
-import React, { useState } from "react";
 import { ideas } from "@/components/TrendingIdeas/Ideas";
+import { withAuth } from "@/components/withAuth";
+import { useSession } from "@/hooks/useSession";
 
-const TrendingIdeas = () => {
+function TrendingIdeas() {
+  const { user } = useSession(false); // false means auth is not required
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("");
 
@@ -34,6 +37,6 @@ const TrendingIdeas = () => {
       <IdeaGrid ideas={filteredIdeas} />
     </div>
   );
-};
+}
 
-export default TrendingIdeas;
+export default withAuth(TrendingIdeas, { requireAuth: false });
