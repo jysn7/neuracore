@@ -1,17 +1,35 @@
 "use client";
-import AboutAuthor from '@/components/Idea/AboutAuthor';
-import AddComment from '@/components/Idea/AddComment';
-import IdeaAction from '@/components/Idea/IdeaAction';
-import IdeaComments from '@/components/Idea/IdeaComments';
-import IdeaDetails from '@/components/Idea/IdeaDetails';
-import IdeaHeader from '@/components/Idea/IdeaHeader';
-import IdeaStats from '@/components/Idea/IdeaStats';
-import IdeaTags from '@/components/Idea/IdeaTags';
-import RelatedIdeas from '@/components/Idea/RelatedIdeas';
-import { ArrowLeft, Bookmark, Eye, Heart, HeartIcon, MessageCircle, Save, SaveIcon, Share, Share2, ShareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react';
-import React from 'react';
 
-const Idea = () => {
+import React from "react";
+import AboutAuthor from "@/components/Idea/AboutAuthor";
+import AddComment from "@/components/Idea/AddComment";
+import IdeaAction from "@/components/Idea/IdeaAction";
+import IdeaComments from "@/components/Idea/IdeaComments";
+import IdeaDetails from "@/components/Idea/IdeaDetails";
+import IdeaHeader from "@/components/Idea/IdeaHeader";
+import IdeaStats from "@/components/Idea/IdeaStats";
+import IdeaTags from "@/components/Idea/IdeaTags";
+import RelatedIdeas from "@/components/Idea/RelatedIdeas";
+import {
+  ArrowLeft,
+  Bookmark,
+  Eye,
+  Heart,
+  HeartIcon,
+  MessageCircle,
+  Save,
+  SaveIcon,
+  Share,
+  Share2,
+  ShareIcon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
+} from "lucide-react";
+import { withAuth } from "@/components/withAuth";
+import { useSession } from "@/hooks/useSession";
+
+function Idea() {
+  const { user } = useSession(false); // false means auth is not required
   type Comment = {
     id: number;
     author: string;
@@ -46,26 +64,21 @@ const Idea = () => {
   ];
 
   return (
-    <div className='w-full px-[8vw] md:px-[16vw] pb-8 min-h-screen bg-bg'>
-      <IdeaHeader 
+    <div className="w-full px-[8vw] md:px-[16vw] pb-8 min-h-screen bg-bg">
+      <IdeaHeader
         coverImageUrl="https://images.unsplash.com/photo-1741983139985-7fff27fffc3f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         categories={["AI & Technology", "Agriculture"]}
         title="AI-Powered Personal Finance Assistant"
         description="A comprehensive smart assistant that analyzes spending patterns and provides personalized financial advice using advanced machine learning algorithms."
-        link='/trending-ideas'
+        link="/trending-ideas"
       />
 
-      <IdeaStats 
-        views={1500} 
-        likes={892} 
-        comments={56} 
-        timeAgo="2 hours ago" 
-      />
+      <IdeaStats views={1500} likes={892} comments={56} timeAgo="2 hours ago" />
 
       <IdeaAction
-        onLike={() => console.log('Liked!')}
-        onSave={() => console.log('Saved!')}
-        onShare={() => console.log('Shared!')}
+        onLike={() => console.log("Liked!")}
+        onSave={() => console.log("Saved!")}
+        onShare={() => console.log("Shared!")}
         isLiked={true}
         isSaved={false}
         isShared={false}
@@ -91,7 +104,7 @@ const Idea = () => {
         technicalImplementation="Built using Python and TensorFlow for the AI components, with a React frontend and secure API integrations."
       />
 
-      <IdeaTags tags={['AI', 'Agriculture', 'FinTech']} />
+      <IdeaTags tags={["AI", "Agriculture", "FinTech"]} />
 
       <AddComment totalComments={commentsData.length} />
       <IdeaComments comments={commentsData} />
@@ -106,13 +119,13 @@ const Idea = () => {
 
       <RelatedIdeas
         ideas={[
-          { id: 1, title: 'Related AI Idea 1', views: '2.1k views' },
-          { id: 2, title: 'Smart Finance Tool', views: '1.5k views' },
-          { id: 3, title: 'AI Crop Analysis', views: '3.2k views' },
+          { id: 1, title: "Related AI Idea 1", views: "2.1k views" },
+          { id: 2, title: "Smart Finance Tool", views: "1.5k views" },
+          { id: 3, title: "AI Crop Analysis", views: "3.2k views" },
         ]}
       />
     </div>
   );
 }
 
-export default Idea;
+export default withAuth(Idea, { requireAuth: false });

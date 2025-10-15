@@ -2,42 +2,102 @@
 
 import React, { useState, useEffect } from "react";
 import { UploadCloud } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { withAuth } from "@/components/withAuth";
+import { useSession } from "@/lib/auth/session-provider";
+import { createClient } from "@/app/lib/supabase/client";
+
+// Import components
 import TagsInput from "@/components/Tags/TagsInput";
 import TiptapEditor from "@/components/submitIdea/TiptapEditor";
-import { supabase } from "@/app/supabase-client";
-
-interface User {
-  id: string;
-  email: string;
-  full_name: string;
-}
+import Menubar from "@/components/submitIdea/Menu-bar";
+import Toggle from "@/components/submitIdea/Toggle";
 
 const categories = ["General", "Tech", "Health", "Education", "Finance"];
 
-const SubmitIdeaPage = () => {
+// Types
+interface User {
+  id: string;
+  email: string; // This will contain username from profiles
+  full_name: string | null;
+}
+
+function SubmitIdea() {
+  const supabase = createClient();
+  const { user } = useSession();
+  const router = useRouter();
+  
   const [ideaTitle, setIdeaTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [coverImg, setCoverImg] = useState<File | null>(null);
   const [category, setCategory] = useState("General");
+  const [coverImg, setCoverImg] = useState<File | null>(null);
   const [collaborators, setCollaborators] = useState<string[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
+  
+  const getFormState = () => ({
+    title: ideaTitle,
+    subtitle,
+    description,
+    content,
+    tags,
+    category,
+    collaborators
+  });
+
+  const restoreFormState = (state: any) => {
+    setIdeaTitle(state.title);
+    setSubtitle(state.subtitle);
+    setDescription(state.description);
+    setContent(state.content);
+    setTags(state.tags);
+    setCategory(state.category);
+    setCollaborators(state.collaborators);
+    sessionStorage.removeItem('ideaFormState');
+  };
+
+  // Restore form state on mount if available
+  useEffect(() => {
+    if (!user) {
+      // Save form state before redirect
+      sessionStorage.setItem('ideaFormState', JSON.stringify(getFormState()));
+      return;
+    }
+
+    // Restore form state if available
+    const savedState = sessionStorage.getItem('ideaFormState');
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        restoreFormState(state);
+      } catch (error) {
+        console.error('Error restoring form state:', error);
+        sessionStorage.removeItem('ideaFormState');
+      }
+    }
+  }, [user]);
 
   // Fetch all users for collaborator selection
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data, error } = await supabase.from("users").select("id, email, full_name");
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, username, full_name");
       if (error) {
         console.error("Error fetching users:", error);
       } else {
-        setUsers(data || []);
+        setUsers(data?.map(profile => ({
+          id: profile.id,
+          email: profile.username, // using username instead of email since it's in profiles
+          full_name: profile.full_name
+        })) || []);
       }
     };
     fetchUsers();
-  }, []);
+  }, [supabase]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -66,6 +126,7 @@ const SubmitIdeaPage = () => {
       const res = await fetch("/api/ideas/create", {
         method: "POST",
         body: formData,
+        credentials: 'include'
       });
 
       const data = await res.json();
@@ -160,7 +221,10 @@ const SubmitIdeaPage = () => {
               value={collaborators}
               onChange={(e) =>
                 setCollaborators(
-                  Array.from(e.target.selectedOptions, (option) => option.value)
+                  Array.from(
+                    e.target.selectedOptions,
+                    (option) => option.value,
+                  ),
                 )
               }
               className="w-full bg-bg-dark border-none focus:outline-none text-white"
@@ -184,6 +248,6 @@ const SubmitIdeaPage = () => {
       </div>
     </main>
   );
-};
+}
 
-export default SubmitIdeaPage;
+export default withAuth(SubmitIdea);

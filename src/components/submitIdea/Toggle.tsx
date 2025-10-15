@@ -6,7 +6,11 @@ interface ToggleProps {
   children: React.ReactNode;
 }
 
-const Toggle: React.FC<ToggleProps> = ({ pressed, onPressedChange, children }) => {
+const Toggle: React.FC<ToggleProps> = ({
+  pressed,
+  onPressedChange,
+  children,
+}) => {
   return (
     <button
       type="button"

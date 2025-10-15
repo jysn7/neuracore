@@ -1,17 +1,64 @@
-// import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-// import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+import { createClient } from "@/app/lib/supabase/server";
 
-// export async function GET() {
-//   const supabase = createRouteHandlerClient({ cookies });
+export async function GET(request: Request) {
+  try {
+    const supabase = await createClient();
+    const { searchParams } = new URL(request.url);
 
-//   const { data: ideas, error } = await supabase
-//     .from("ideas")
-//     .select("*")
-//     .order("created_at", { ascending: false });
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
+    const category = searchParams.get("category");
+    const tag = searchParams.get("tag");
+    const search = searchParams.get("search");
+    const sort = searchParams.get("sort") || "created_at";
+    const order = (searchParams.get("order") || "desc") as "asc" | "desc";
 
-//   if (error) {
-//     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
-//   }
+    const offset = (page - 1) * limit;
 
-//   return new Response(JSON.stringify(ideas), { status: 200 });
-// }
+    let query = supabase.from("ideas").select(`
+        *,
+        author:profiles(id, username, avatar_url),
+        comments:comments(count),
+        likes:idea_likes(count)
+      `);
+
+    // Apply filters
+    if (category) {
+      query = query.eq("category", category);
+    }
+
+    if (tag) {
+      query = query.contains("tags", [tag]);
+    }
+
+    if (search) {
+      query = query.or(`title.ilike.%${search}%,content.ilike.%${search}%`);
+    }
+
+    // Apply sorting
+    query = query.order(sort, { ascending: order === "asc" });
+
+    // Apply pagination
+    query = query.range(offset, offset + limit - 1);
+
+    const { data: ideas, error, count } = await query;
+
+    if (error) {
+      throw error;
+    }
+
+    return NextResponse.json({
+      ideas,
+      pagination: {
+        page,
+        limit,
+        total: count,
+        totalPages: Math.ceil((count || 0) / limit),
+      },
+    });
+  } catch (error: any) {
+    console.error("Error fetching ideas:", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

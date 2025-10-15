@@ -22,7 +22,11 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
       className="rounded-lg border-1 border-border-secondary  hover:scale-102 transform-all duration-300 bg-bg-dark overflow-hidden"
     >
       <div className="bg-bg-dark-gray relative flex justify-center items-center text-text-primary font-semibold text-sm h-40 sm:h-44 w-full">
-        <img src={idea.imageUrl} className="w-full h-full object-cover" alt="cover-img" />
+        <img
+          src={idea.imageUrl}
+          className="w-full h-full object-cover"
+          alt="cover-img"
+        />
         <div className="bg-red-600 left-1 text-white top-2 rounded gap-1 font-semibold text-[10px] p-1 absolute flex">
           <TrendingUp size={12} className="m-auto " />
           <p>Trending</p>
@@ -44,7 +48,9 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
           {idea.description}
         </p>
         <div className="text-text-secondary text-xs font-semibold flex justify-between mt-2 mb-4 md:my-3">
-          <p className="hover:text-text-primary cursor-pointer">by {idea.author}</p>
+          <p className="hover:text-text-primary cursor-pointer">
+            by {idea.author}
+          </p>
           <p>{idea.time}</p>
         </div>
         <div className="flex gap-3 sm:gap-4">

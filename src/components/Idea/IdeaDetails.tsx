@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 type IdeaDetailsProps = {
-  description: string
-  keyFeatures: string[]
-  extraDescription?: string
-  targetMarket: string
-  technicalImplementation: string
-}
+  description: string;
+  keyFeatures: string[];
+  extraDescription?: string;
+  targetMarket: string;
+  technicalImplementation: string;
+};
 
 const IdeaDetails: React.FC<IdeaDetailsProps> = ({
   description,
@@ -54,7 +54,7 @@ const IdeaDetails: React.FC<IdeaDetailsProps> = ({
         {technicalImplementation}
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default IdeaDetails
+export default IdeaDetails;

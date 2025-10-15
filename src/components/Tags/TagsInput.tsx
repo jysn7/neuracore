@@ -12,7 +12,9 @@ const TagsInput: React.FC<TagsInputProps> = ({ value, onChange }) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim() !== "") {
       e.preventDefault();
-      const newTag = inputValue.startsWith("#") ? inputValue.trim() : `#${inputValue.trim()}`;
+      const newTag = inputValue.startsWith("#")
+        ? inputValue.trim()
+        : `#${inputValue.trim()}`;
       if (!value.includes(newTag)) {
         onChange([...value, newTag]);
       }

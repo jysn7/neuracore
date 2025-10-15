@@ -17,7 +17,9 @@ const AchievementItem: React.FC<AchievementItemProps> = ({
   <div className="flex items-start gap-3">
     <div className="text-gray-400 mt-1">{icon}</div>
     <div>
-      <h4 className={`font-semibold ${isHighlighted ? "text-brand-red" : "text-text-primary"}`}>
+      <h4
+        className={`font-semibold ${isHighlighted ? "text-brand-red" : "text-text-primary"}`}
+      >
         {title}
       </h4>
       <p className="text-xs text-gray-500">{description}</p>
@@ -27,10 +29,30 @@ const AchievementItem: React.FC<AchievementItemProps> = ({
 
 const Achievements = () => {
   const achievements = [
-    { icon: <Award size={18} />, title: "First Idea", description: "Posted your first idea", isHighlighted: true },
-    { icon: <TrendingUp size={18} />, title: "Trending Creator", description: "Had an idea reach trending", isHighlighted: false },
-    { icon: <Heart size={18} />, title: "Popular Voice", description: "Received 1000+ views", isHighlighted: true },
-    { icon: <Star size={18} />, title: "Community Favorite", description: "Received 500+ likes", isHighlighted: false },
+    {
+      icon: <Award size={18} />,
+      title: "First Idea",
+      description: "Posted your first idea",
+      isHighlighted: true,
+    },
+    {
+      icon: <TrendingUp size={18} />,
+      title: "Trending Creator",
+      description: "Had an idea reach trending",
+      isHighlighted: false,
+    },
+    {
+      icon: <Heart size={18} />,
+      title: "Popular Voice",
+      description: "Received 1000+ views",
+      isHighlighted: true,
+    },
+    {
+      icon: <Star size={18} />,
+      title: "Community Favorite",
+      description: "Received 500+ likes",
+      isHighlighted: false,
+    },
   ];
 
   return (

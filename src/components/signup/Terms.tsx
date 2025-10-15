@@ -20,15 +20,13 @@ const Terms: React.FC<TermsProps> = ({ show, onClose }) => {
         <h2 className="text-lg font-semibold mb-4">Terms & Conditions</h2>
         <div className="text-sm text-neutral-300 max-h-64 overflow-y-auto pr-2">
           <p>
-            Welcome to our platform. By creating an account you agree to
-            abide by our rules, respect other users, and use the system
-            responsibly. Any misuse may lead to suspension or termination
-            of your account.
+            Welcome to our platform. By creating an account you agree to abide
+            by our rules, respect other users, and use the system responsibly.
+            Any misuse may lead to suspension or termination of your account.
           </p>
           <p className="mt-2">
-            Please read the full Terms & Conditions carefully before
-            proceeding. By checking the box you confirm that you have read
-            and agreed.
+            Please read the full Terms & Conditions carefully before proceeding.
+            By checking the box you confirm that you have read and agreed.
           </p>
         </div>
         <div className="mt-4 flex justify-end">

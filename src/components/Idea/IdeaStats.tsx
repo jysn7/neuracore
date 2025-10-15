@@ -1,14 +1,19 @@
-import { Eye, Heart, MessageCircle } from 'lucide-react'
-import React from 'react'
+import { Eye, Heart, MessageCircle } from "lucide-react";
+import React from "react";
 
 type IdeaStatsProps = {
-  views: number
-  likes: number
-  comments: number
-  timeAgo: string
-}
+  views: number;
+  likes: number;
+  comments: number;
+  timeAgo: string;
+};
 
-const IdeaStats: React.FC<IdeaStatsProps> = ({ views, likes, comments, timeAgo }) => {
+const IdeaStats: React.FC<IdeaStatsProps> = ({
+  views,
+  likes,
+  comments,
+  timeAgo,
+}) => {
   return (
     <div className="flex mt-2 mb-3 gap-6 md:gap-3">
       {/* Views */}
@@ -34,7 +39,7 @@ const IdeaStats: React.FC<IdeaStatsProps> = ({ views, likes, comments, timeAgo }
         <p>{timeAgo}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default IdeaStats
+export default IdeaStats;

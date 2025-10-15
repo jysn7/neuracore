@@ -2,22 +2,23 @@ import { supabase } from "@/app/supabase-client";
 
 export const signInWithEmail = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signInWithPassword({
-    email,  password
+    email,
+    password,
   });
-  if (error){
+  if (error) {
     console.log("Error signing in:", error.message);
-  }
-  else if (!error && data){
+  } else if (!error && data) {
     console.log("Sign-in successful:", data);
   }
-}
+};
 
 export const signUpWithEmail = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signUp({
-    email, password
+    email,
+    password,
   });
-  if (error){
+  if (error) {
     console.log("Error signing up:", error.message);
   }
   //return { data, error };
-}
+};

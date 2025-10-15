@@ -1,5 +1,5 @@
 // src/components/NotificationItem.tsx
-import React from 'react';
+import React from "react";
 
 interface NotificationItemProps {
   icon: string; // Emoji for the icon
@@ -8,7 +8,12 @@ interface NotificationItemProps {
   isUnread: boolean;
 }
 
-const NotificationItem: React.FC<NotificationItemProps> = ({ icon, text, time, isUnread }) => {
+const NotificationItem: React.FC<NotificationItemProps> = ({
+  icon,
+  text,
+  time,
+  isUnread,
+}) => {
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 p-2 md:p-4 border-b border-border-secondary w-full">
       <span className="text-lg flex-shrink-0">{icon}</span>

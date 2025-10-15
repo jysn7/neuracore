@@ -23,7 +23,6 @@ const ChallengePage = () => {
       {/* Buttons */}
       <ChallengeActions />
 
-
       {/* Tabs + Dynamic Content */}
       <ChallengeTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <ChallengeContent activeTab={activeTab} />

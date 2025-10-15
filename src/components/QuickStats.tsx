@@ -1,5 +1,5 @@
 // src/components/QuickStats.tsx
-import React from 'react';
+import React from "react";
 
 const QuickStats = () => {
   return (
@@ -19,7 +19,10 @@ const QuickStats = () => {
           <span>85%</span>
         </div>
         <div className="w-full bg-gray-700 rounded-full h-2">
-          <div className="bg-red-500 h-2 rounded-full" style={{ width: '85%' }}></div>
+          <div
+            className="bg-red-500 h-2 rounded-full"
+            style={{ width: "85%" }}
+          ></div>
         </div>
       </div>
     </div>

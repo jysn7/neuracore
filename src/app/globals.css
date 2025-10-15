@@ -7,32 +7,32 @@
   /* Brand Colors */
   --color-brand-black: #000000;
   --color-brand-white: #ffffff;
-  --color-brand-red: #DF1616;
+  --color-brand-red: #df1616;
 
   /* Buttons */
   --color-btn-primary: var(--color-brand-red);
   --color-btn-primary-hover: #b91919;
-  --color-btn-secondary: #1D283A;
+  --color-btn-secondary: #1d283a;
   --color-btn-secondary-hover: #233045;
   --color-btn-text: var(--color-brand-white);
 
   /* Backgrounds (Dark Mode Default) */
   --color-bg: #141414;
-  --color-bg-dark: #1F1F1F;
+  --color-bg-dark: #1f1f1f;
   --color-bg-light: #f9fafb;
   --color-bg-gray: #2c2c2c;
-  --color-bg-dark-gray: #181B20;
+  --color-bg-dark-gray: #181b20;
   --color-bg-overlay: rgba(0, 0, 0, 0.4);
 
   /* Text */
   --color-text-primary: #ffffff;
   --color-text-dark: #000000;
   --color-text-secondary: #757575;
-  --color-text-green: #22C55E;
+  --color-text-green: #22c55e;
 
   /* Borders */
-  --color-border-secondary: #1D283A;
-  --color-border-primary: #DF1616;
+  --color-border-secondary: #1d283a;
+  --color-border-primary: #df1616;
 
   /* Fonts */
   --font-display: "Poppins", sans-serif;
@@ -42,35 +42,35 @@
 /* ─────────────────────────────────────────────── */
 /* LIGHT MODE OVERRIDES                            */
 /* ─────────────────────────────────────────────── */
-[data-theme='light'] {
+[data-theme="light"] {
   /* Keep brand + button colors the same */
   --color-brand-black: #000000;
   --color-brand-white: #ffffff;
-  --color-brand-red: #DF1616;
+  --color-brand-red: #df1616;
 
   --color-btn-primary: var(--color-brand-red);
   --color-btn-primary-hover: #b91919;
-  --color-btn-secondary: #1D283A;
+  --color-btn-secondary: #1d283a;
   --color-btn-secondary-hover: #233045;
   --color-btn-text: var(--color-brand-white);
 
   /* 🌤 Backgrounds */
-  --color-bg: #FFFFFF;             /* main app background */
-  --color-bg-dark: #FAFAFA;        /* cards, panels */
-  --color-bg-light: #ffffff;       /* white surfaces */
-  --color-bg-gray: #F5F5F5;        /* light gray UI elements */
-  --color-bg-dark-gray: #bdbcbc;   /* for subtle contrast zones */
+  --color-bg: #ffffff; /* main app background */
+  --color-bg-dark: #fafafa; /* cards, panels */
+  --color-bg-light: #ffffff; /* white surfaces */
+  --color-bg-gray: #f5f5f5; /* light gray UI elements */
+  --color-bg-dark-gray: #bdbcbc; /* for subtle contrast zones */
   --color-bg-overlay: rgb(255, 255, 255);
 
   /* ✍️ Text */
-  --color-text-primary: #111111;   /* main text */
-  --color-text-dark: #000000;      /* pure black */
+  --color-text-primary: #111111; /* main text */
+  --color-text-dark: #000000; /* pure black */
   --color-text-secondary: #737373; /* muted text */
-  --color-text-green: #15803d;     /* accent green */
+  --color-text-green: #15803d; /* accent green */
 
   /* 🧱 Borders */
-  --color-border-secondary: #E6E6E6; /* neutral border */
-  --color-border-primary: #DF1616;   /* red border accent */
+  --color-border-secondary: #e6e6e6; /* neutral border */
+  --color-border-primary: #df1616; /* red border accent */
 
   /* Fonts (unchanged) */
   --font-display: "Poppins", sans-serif;
@@ -95,7 +95,9 @@ body {
 }
 
 /* Optional: smoother transitions for theme switch */
-:root, [data-theme='light'], [data-theme='dark'] {
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
