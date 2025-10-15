@@ -1,14 +1,14 @@
 import React from 'react';
 import StatCard from '@/components/profile/Stats';
-import IdeaPerformance from '@/components/IdeaPerformance'; 
-import QuickStats from '@/components/QuickStats'; 
-import Achievements from '@/components/profile/Achievements'; 
-import ActivityThisWeek from '@/components/ActivityThisWeek'; 
+import IdeaPerformance from '@/components/IdeaPerformance';
+import QuickStats from '@/components/QuickStats';
+import Achievements from '@/components/profile/Achievements';
+import ActivityThisWeek from '@/components/ActivityThisWeek';
 import { Eye, Heart, MessageSquare, Users } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
-    <main className="py-8 px-[8vw] md:px-[16vw] bg-bg">
+    <main className="py-8 px-[8vw] md:px-[16vw] bg-[var(--color-bg)]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Views"
@@ -38,8 +38,8 @@ export default function DashboardPage() {
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <div className="bg-[#121212] p-6 rounded-lg border border-gray-700">
-            <h2 className="text-2xl font-bold text-white mb-6">Recent Ideas Performance</h2>
+          <div className="bg-[var(--color-bg-dark)] p-6 rounded-lg border border-[var(--color-border-secondary)]">
+            <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">Recent Ideas Performance</h2>
             <div className="flex flex-col gap-4">
               <IdeaPerformance
                 title="AI-Powered Personal Finance Assistant"
