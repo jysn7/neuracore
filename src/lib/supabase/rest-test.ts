@@ -2,10 +2,12 @@ import { env } from 'process'
 import { en } from "zod/locales"
 
 async function testReadOnlyAccess() {
-    const SUPABASE_URL = 'https://kmontdruuvtofryjcaxf.supabase.co/rest/v1'
+    const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1'
+    const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    
     const headers = {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imttb250ZHJ1dXZ0b2ZyeWpjYXhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0ODkzNDUsImV4cCI6MjA3NDA2NTM0NX0.2gbtvGAUnHMLs47lHRNeCRW6MT0-cUJh2_4wMvlbf-4',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imttb250ZHJ1dXZ0b2ZyeWpjYXhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0ODkzNDUsImV4cCI6MjA3NDA2NTM0NX0.2gbtvGAUnHMLs47lHRNeCRW6MT0-cUJh2_4wMvlbf-4'
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
     }
 
     try {

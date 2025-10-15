@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Create a test client with direct credentials (for testing only)
+// Create a test client with environment variables (for testing only)
 const testClient = createClient(
-    'https://kmontdruuvtofryjcaxf.supabase.co',  // Your Supabase URL
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_CLAUDE_KEY!, // The password we set for claude_user
     {
         auth: {

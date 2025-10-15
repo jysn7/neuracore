@@ -1,6 +1,7 @@
 "use client";
 import LoginForm from "@/components/login/LoginForm";
 import { Check, Eye, EyeClosed } from "lucide-react";
+import { Suspense } from "react";
 
 import React, { useState } from "react";
 
@@ -122,7 +123,9 @@ const Signin = () => {
           </div>
 
           {/* Right Side */}
-          <LoginForm />
+          <Suspense fallback={<div className="flex items-center justify-center w-full md:w-2/5">Loading...</div>}>
+            <LoginForm />
+          </Suspense>
         </div>
       </section>
     </div>
