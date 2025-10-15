@@ -31,7 +31,7 @@
   --color-text-green: #22c55e;
 
   /* Borders */
-  --color-border-secondary: #1d283a;
+  --color-border-secondary: #464545;
   --color-border-primary: #df1616;
 
   /* Fonts */
@@ -69,7 +69,7 @@
   --color-text-green: #15803d;
 
   /* 🧱 Borders */
-  --color-border-secondary: #898989; /* neutral border */
+  --color-border-secondary: #c7c7c7; /* neutral border */
   --color-border-primary: #df1616;   /* red border accent */
 
   /* Fonts */

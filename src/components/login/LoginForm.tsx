@@ -83,7 +83,7 @@ const LoginForm = () => {
             onChange={handleChange}
             placeholder="username@neura.com"
             className="
-                            text-[0.8vw] text-white 
+                             text-white 
                            bg-[#242424] 
                            rounded border-none outline-none 
                            px-[1vw] w-full h-8 mt-2 mb-4
@@ -111,7 +111,7 @@ const LoginForm = () => {
               required
               placeholder="Enter your password"
               className="
-                            text-[0.8vw] text-white 
+                           text-white 
                            bg-[#242424] 
                            rounded border-none outline-none 
                            px-[1vw] w-full h-8 mt-2 mb-4
