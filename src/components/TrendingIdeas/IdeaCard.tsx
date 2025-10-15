@@ -19,7 +19,7 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
   return (
     <Link
       href="/idea"
-      className="rounded-lg border-1 border-border-secondary  hover:scale-102 transform-all duration-300 bg-bg-dark overflow-hidden"
+      className="rounded-lg border-1 hover:shadow-lg border-border-secondary  hover:border-brand-red transform-all duration-300 bg-bg-dark overflow-hidden"
     >
       <div className="bg-bg-dark-gray relative flex justify-center items-center text-text-primary font-semibold text-sm h-40 sm:h-44 w-full">
         <img
@@ -38,7 +38,7 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
       </div>
 
       <div className="px-4 sm:px-5 mb-4 py-2">
-        <div className="bg-btn-secondary text-xs md:my-3 my-1 rounded w-fit font-semibold text-white px-2 py-1">
+        <div className="bg-text-secondary/40 text-xs md:my-3 my-1 rounded-full w-fit font-semibold text-white px-2 py-1">
           <p>{idea.category}</p>
         </div>
         <h1 className="text-text-primary text-sm sm:text-base md:text-xl font-semibold">

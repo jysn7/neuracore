@@ -15,9 +15,9 @@ const TrendingHeader: React.FC<Props> = ({
   setSelected,
 }) => {
   return (
-    <div className="flex flex-col w-full z-20 sticky top-[8vh] bg-bg left-0 right-0">
+    <div className="flex flex-col w-full  bg-bg">
       {/* Inner container with padding and border that doesn't touch screen edges */}
-      <div className="px-[8vw] md:px-[16vw] border-b border-border-secondary py-4">
+      <div className="px-[6vw] md:px-[10vw] border-b border-border-secondary py-4">
         <div className="text-text-primary flex items-center justify-start gap-2">
           <TrendingUp size={25} />
           <h1 className="text-lg md:text-2xl font-semibold">Trending Ideas</h1>
@@ -35,7 +35,7 @@ const TrendingHeader: React.FC<Props> = ({
               text-text-primary placeholder:text-text-secondary 
               placeholder:text-xs md:placeholder:text-sm 
               pl-4 p-1 md:p-2 rounded-md 
-              focus:outline-none focus:ring-2 focus:ring-btn-secondary-hover"
+              focus:outline-none focus:ring-2 focus:ring-btn-primary"
           />
 
           <select
@@ -43,7 +43,7 @@ const TrendingHeader: React.FC<Props> = ({
             onChange={(e) => setSelected(e.target.value)}
             className="w-full sm:w-auto bg-bg-gray border border-border-secondary 
               text-text-primary pl-2 pr-8 py-1 md:py-2 rounded-lg 
-              focus:outline-none focus:ring-2 focus:ring-btn-secondary-hover"
+              focus:outline-none focus:ring-2 focus:ring-btn-primary"
           >
             <option value="option1">All Categories</option>
             <option value="AI & Technology">AI & Technology</option>

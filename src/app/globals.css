@@ -31,7 +31,7 @@
   --color-text-green: #22c55e;
 
   /* Borders */
-  --color-border-secondary: #1d283a;
+  --color-border-secondary: #464545;
   --color-border-primary: #df1616;
 
   /* Fonts */
@@ -55,24 +55,24 @@
   --color-btn-text: var(--color-brand-white);
 
   /* 🌤 Backgrounds */
-  --color-bg: #ffffff; /* main app background */
-  --color-bg-dark: #fafafa; /* cards, panels */
-  --color-bg-light: #ffffff; /* white surfaces */
-  --color-bg-gray: #f5f5f5; /* light gray UI elements */
-  --color-bg-dark-gray: #bdbcbc; /* for subtle contrast zones */
+  --color-bg: #ffffff;
+  --color-bg-dark: #fafafa;
+  --color-bg-light: #ffffff;
+  --color-bg-gray: #f5f5f5;
+  --color-bg-dark-gray: #bdbcbc;
   --color-bg-overlay: rgb(255, 255, 255);
 
   /* ✍️ Text */
-  --color-text-primary: #111111; /* main text */
-  --color-text-dark: #000000; /* pure black */
-  --color-text-secondary: #737373; /* muted text */
-  --color-text-green: #15803d; /* accent green */
+  --color-text-primary: #111111;
+  --color-text-dark: #000000;
+  --color-text-secondary: #737373;
+  --color-text-green: #15803d;
 
   /* 🧱 Borders */
-  --color-border-secondary: #e6e6e6; /* neutral border */
-  --color-border-primary: #df1616; /* red border accent */
+  --color-border-secondary: #c7c7c7; /* neutral border */
+  --color-border-primary: #df1616;   /* red border accent */
 
-  /* Fonts (unchanged) */
+  /* Fonts */
   --font-display: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
 }
@@ -94,7 +94,6 @@ body {
     border-color 0.3s ease;
 }
 
-/* Optional: smoother transitions for theme switch */
 :root,
 [data-theme="light"],
 [data-theme="dark"] {

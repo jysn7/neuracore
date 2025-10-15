@@ -89,7 +89,7 @@ export default function SignupForm() {
               id="firstName"
               {...register("firstName")}
               placeholder="e.g. John"
-              className="font-[500] text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
+              className="font-[500]  text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
             />
             {errors.firstName && (
               <p className="text-red-400 text-xs mt-1">
@@ -110,7 +110,7 @@ export default function SignupForm() {
               id="lastName"
               {...register("lastName")}
               placeholder="e.g. Doe"
-              className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
+              className=" text-white bg-bg-dark rounded border-none outline-none px-[1vw] max-w-[190px] w-full h-8 placeholder:text-xs transition duration-400 mt-1 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
             />
             {errors.lastName && (
               <p className="text-red-400 text-xs mt-1">
@@ -132,7 +132,7 @@ export default function SignupForm() {
             id="email"
             {...register("email")}
             placeholder="e.g. johndoe@gmail.com"
-            className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
+            className=" text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
           />
           {errors.email && (
             <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>
@@ -150,7 +150,7 @@ export default function SignupForm() {
               id="password"
               {...register("password")}
               placeholder="Enter your password"
-              className="font-[500] text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
+              className="font-[500] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
             />
             {errors.password && (
               <p className="text-red-400 text-xs mt-1">
@@ -177,7 +177,7 @@ export default function SignupForm() {
             id="confirmPassword"
             {...register("confirmPassword")}
             placeholder="Confirm your password"
-            className="text-[0.8vw] text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
+            className=" text-white bg-bg-dark rounded border-none outline-none px-[1vw] w-full h-8 mt-1 mb-4 placeholder:text-xs transition duration-400 hover:shadow-[0_0_0_0.15vw_rgba(223,22,22,0.4)] focus:shadow-[0_0_0_0.15vw_#DF1616]"
           />
           {errors.confirmPassword && (
             <p className="text-red-400 text-xs mt-1">
