@@ -107,7 +107,7 @@ const TrendingHeader: React.FC<Props> = ({
   return (
     <div className="flex flex-col w-full  bg-bg">
       
-      <div className="px-[6vw] md:px-[10vw]  py-2">
+      <div className="px-[2vw] md:px-[10vw]  py-2">
         <div className="text-text-primary flex items-center justify-start gap-1">
           <TrendingUp size={25} />
           <h1 className="text-lg md:text-2xl font-semibold">Discover Ideas</h1>

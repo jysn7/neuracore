@@ -154,7 +154,7 @@ function SubmitIdea() {
   };
 
   return (
-    <main className="p-8 text-text-primary py-8 px-[6vw] md:px-[10vw] bg-bg min-h-screen">
+    <main className="p-8 text-text-primary py-8 px-[2vw] md:px-[10vw] bg-bg min-h-screen">
       <h1 className="text-3xl font-bold mb-8">Submit Idea</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
