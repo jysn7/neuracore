@@ -60,7 +60,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="h-[9vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray backdrop-blur-2xl flex justify-between px-[6vw] items-center bg-bg/30">
+    <nav className="h-[9vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray md:backdrop-blur-2xl flex justify-between px-[6vw] items-center bg-bg md:bg-bg/30">
       <div className="flex items-end gap-4">
         <Link href="/trending-ideas" className="flex items-center">
           <Image
@@ -156,13 +156,13 @@ const Navbar = () => {
                 <UserRound size={21} /> My Profile
               </Link>
               <Link
-                href="/profile#notifications"
+                href="/profile?tab=Notifications"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
                 <BellIcon size={18} /> Notifications
               </Link>
               <Link
-                href="/settings"
+                href="/profile?tab=Settings"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
                 <Settings2Icon size={18} /> Settings
@@ -246,10 +246,16 @@ const Navbar = () => {
                     <TrophyIcon size={16} /> Leaderboard
                   </Link>
                   <Link
-                    href="/profile#settings"
+                    href="/profile?tab=Settings"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
                     <Settings2Icon size={16} /> Settings
+                  </Link>
+                  <Link
+                    href="/profile?tab=Notifications"
+                    className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
+                  >
+                    <BellIcon size={16} /> Notifications
                   </Link>
                   <button
                     onClick={toggleTheme}

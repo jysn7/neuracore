@@ -10,7 +10,7 @@ const ChallengePage = () => {
   const [activeTab, setActiveTab] = useState("Overview");
 
   return (
-    <section className="w-full px-[6vw] md:px-[10vw] pb-8 min-h-screen bg-bg">
+    <section className="w-full px-[2vw] md:px-[10vw] pb-8 min-h-screen bg-bg">
       <ChallengeHeader
         categories={["AI & Technology", "Health"]}
         title="AI-Powered Healthcare Assistant"
