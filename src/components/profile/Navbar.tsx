@@ -5,7 +5,7 @@ import {
   LightbulbIcon,
   LogOut,
   LucideHamburger,
-  MailIcon,
+
   Menu,
   MoonIcon,
   Plus,
@@ -60,7 +60,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="h-[8vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray flex justify-between px-[6vw] items-center bg-bg">
+    <nav className="h-[9vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray backdrop-blur-2xl flex justify-between px-[6vw] items-center bg-bg/30">
       <div className="flex items-end gap-4">
         <Link href="/trending-ideas" className="flex items-center">
           <Image
@@ -71,7 +71,7 @@ const Navbar = () => {
             }
             alt="NeuraCore Logo"
             width={130}
-            height={30}
+            height={40}
             className="object-contain"
             priority
           />
@@ -130,11 +130,11 @@ const Navbar = () => {
           href="/payment"
           className="hidden md:flex hover:text-white hover:bg-btn-primary-hover gap-1 text-xs font-semibold items-center hover:border-brand-red text-brand-red border-2 px-2.5 py-0.5 rounded-lg"
         >
-          <MailIcon size={17} /> Subscribe
+          <RocketIcon size={17} /> Upgrade
         </Link>
         <button
           onClick={toggleTheme}
-          className="hidden md:flex items-center hover:bg-text-secondary cursor-pointer justify-center text-text-primary hover:text-bg bg-bg-dark-gray rounded-full p-2"
+          className="hidden md:flex items-center hover:bg-brand-red cursor-pointer justify-center text-text-primary hover:text-bg  rounded-full py-2 px-2.5"
         >
           {theme === "dark" ? <SunIcon size={19} /> : <MoonIcon size={19} />}
         </button>
@@ -143,7 +143,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center relative" ref={profileRef}>
           <button
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="bg-bg-dark-gray cursor-pointer hover:text-bg hover:bg-text-secondary rounded-full p-2"
+            className=" cursor-pointer hover:text-bg hover:bg-brand-red rounded-full p-2"
           >
             <UserRound size={21} />
           </button>

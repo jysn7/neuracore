@@ -33,7 +33,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ value, onChange }) => {
         {value.map((tag) => (
           <div
             key={tag}
-            className="bg-btn-secondary text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-2"
+            className="bg-bg-gray text-text-primary text-sm font-medium px-3 py-1 rounded flex items-center gap-2"
           >
             {tag}
             <button
@@ -51,7 +51,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ value, onChange }) => {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Enter a tag"
-        className="w-full bg-bg-gray border border-btn-secondary-hover rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand-red"
+        className="w-full bg-bg-gray border placeholder:text-text-secondary border-btn-secondary-hover rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-brand-red"
       />
       <p className="text-xs text-text-secondary mt-2">
         Press Enter to add a tag.

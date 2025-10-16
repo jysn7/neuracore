@@ -8,10 +8,11 @@ import Achievements from "@/components/profile/Achievements";
 import ActivityThisWeek from "@/components/ActivityThisWeek";
 import { Eye, Heart, MessageSquare, Users } from "lucide-react";
 import { withAuth } from "@/components/withAuth";
+import JoinedChallenges from "@/components/dashboard/JoinedChallenges";
 
 function DashboardPage() {
   return (
-    <main className="py-8 px-[8vw] md:px-[16vw] bg-[var(--color-bg)]">
+    <main className="py-8 px-[6vw] md:px-[10vw] bg-[var(--color-bg)]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Views"
@@ -41,7 +42,8 @@ function DashboardPage() {
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <div className="bg-[var(--color-bg-dark)] p-6 rounded-lg border border-[var(--color-border-secondary)]">
+          <JoinedChallenges />
+          <div className="bg-[var(--color-bg-dark)] p-6 rounded-lg border border-[var(--color-border-secondary)]">   
             <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
               Recent Ideas Performance
             </h2>

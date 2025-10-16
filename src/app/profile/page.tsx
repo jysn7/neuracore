@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import ProfileTabs from "@/components/profile/ProfileTabs";
+import React, { useState } from "react";
 import UserProfile from "@/components/profile/UserProfile";
 import UserAchievements from "@/components/profile/UserAchievements";
 import Notifications from "@/components/profile/Notifications";
@@ -9,12 +8,9 @@ import AccountSettings from "@/components/profile/AccountSettings";
 import { withAuth } from "@/components/withAuth";
 import { useSession } from "@/hooks/useSession";
 
-function UserProfilePage({
-  params,
-}: {
-  params: { id: string };
-}) {
+function UserProfilePage({ params }: { params: { id: string } }) {
   const { user, loading, error } = useSession();
+  const [activeTab, setActiveTab] = useState<"Profile" | "Achievements" | "Notifications" | "Settings">("Profile");
 
   if (loading) {
     return (
@@ -40,33 +36,37 @@ function UserProfilePage({
     );
   }
 
+  const tabs = ["Profile", "Achievements", "Notifications", "Settings"];
+
   return (
-    <main className="py-8 px-[8vw] bg-bg md:px-[16vw] text-white">
-      <ProfileTabs />
-
-      <div id="profile" className="mt-8">
-        <UserProfile user={user} />
+    <main className="py-8 px-[6vw] md:px-[10vw] bg-bg text-white">
+      {/* Tab Navigation */}
+      <div className="bg-bg-dark p-2 rounded-lg border border-border-secondary sticky top-4 z-10 w-full">
+        <nav className="flex w-full md:justify-around overflow-x-auto md:overflow-x-visible whitespace-nowrap">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab as typeof activeTab)}
+              className={`
+                inline-block text-center cursor-pointer py-2.5 px-6 rounded-md text-sm font-medium transition-colors duration-300 flex-shrink-0 w-full md:w-[22%]
+                ${activeTab === tab
+                  ? "bg-bg font-semibold text-text-primary"
+                  : "text-text-secondary hover:bg-bg-gray hover:text-text-primary"
+                }
+              `}
+            >
+              {tab}
+            </button>
+          ))}
+        </nav>
       </div>
 
-      <div className="mt-8 bg-bg p-8 rounded-lg border border-border-secondary">
-        <h3 className="text-lg font-semibold text-text-primary mb-4">About</h3>
-        <p className="text-sm text-text-secondary leading-relaxed">
-          Senior AI Engineer at TechCorp with 8+ years in machine learning and
-          fintech. Passionate about creating innovative solutions that make
-          technology accessible to everyone.
-        </p>
-      </div>
-
-      <div id="achievements" className="mt-8">
-        <UserAchievements />
-      </div>
-
-      <div id="notifications" className="mt-8">
-        <Notifications />
-      </div>
-
-      <div id="settings" className="mt-8">
-        <AccountSettings />
+      {/* Conditional Content */}
+      <div className="mt-8">
+        {activeTab === "Profile" && <UserProfile user={user} />}
+        {activeTab === "Achievements" && <UserAchievements />}
+        {activeTab === "Notifications" && <Notifications />}
+        {activeTab === "Settings" && <AccountSettings />}
       </div>
     </main>
   );
