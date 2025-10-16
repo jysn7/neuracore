@@ -64,7 +64,7 @@ function Idea() {
   ];
 
   return (
-    <div className="w-full px-[8vw] md:px-[16vw] pb-8 min-h-screen bg-bg">
+    <div className="w-full px-[6vw] md:px-[10vw] pb-8 min-h-screen bg-bg">
       <IdeaHeader
         coverImageUrl="https://images.unsplash.com/photo-1741983139985-7fff27fffc3f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         categories={["AI & Technology", "Agriculture"]}
