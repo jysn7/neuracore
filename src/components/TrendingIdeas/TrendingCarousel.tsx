@@ -133,7 +133,7 @@ const TrendingCarousel: React.FC = () => {
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-4 flex flex-col justify-end">
-                  <span className="bg-primary text-white text-xs font-semibold px-2 py-1 rounded w-fit mb-2 flex items-center gap-1">
+                  <span className="bg-btn-primary text-white text-xs font-semibold px-2 py-1 rounded w-fit mb-2 flex items-center gap-1">
                     <TrendingUp className="w-3 h-3" /> Trending
                   </span>
                   <h3 className="text-lg font-semibold text-white line-clamp-2">
