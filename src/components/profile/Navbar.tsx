@@ -1,5 +1,6 @@
 "use client";
 import {
+  AwardIcon,
   BellIcon,
   HamburgerIcon,
   LightbulbIcon,
@@ -153,7 +154,13 @@ const Navbar = () => {
                 href="/profile"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
-                <UserRound size={21} /> My Profile
+                <UserRound size={21} /> Profile
+              </Link>
+              <Link
+                href="/profile?tab=Achievements"
+                className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
+              >
+                <AwardIcon size={18} /> Achievements
               </Link>
               <Link
                 href="/profile?tab=Notifications"
