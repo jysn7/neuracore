@@ -30,6 +30,7 @@ const Settings: React.FC<SettingsProps> = ({
           className={`inline-block w-4 h-4 transform bg-bg-gray rounded-full transition-transform duration-300 ${isEnabled ? "translate-x-6" : "translate-x-1"}`}
         />
       </button>
+      
     </div>
   );
 };

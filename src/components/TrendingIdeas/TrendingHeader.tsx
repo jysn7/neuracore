@@ -1,6 +1,7 @@
 import { TrendingUp, FilterIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useRef } from "react";
 import IdeaCard from "./IdeaCard";
+import TrendingCarousel from "./TrendingCarousel";
 
 interface Props {
   query: string;
@@ -115,63 +116,12 @@ const TrendingHeader: React.FC<Props> = ({
         <p className="text-xs text-text-secondary md:text-sm my-4 md:my-8">
           Discover the most innovative and popular ideas from our community
         </p>
+        <TrendingCarousel />
         <div className="text-text-primary mb-4 flex items-center justify-start gap-2">
           <TrendingUp style={{color: "red"}} size={25} />
           <h1 className="text-lg md:text-2xl font-semibold">Hot Ideas</h1>
         </div>
-        {/* ————— Scrollable carousel area ————— */}
-<div className="relative">
-  
-  <button
-    aria-label="Scroll previous"
-    onClick={handlePrev}
-    className="hidden md:flex absolute left-[-1.5rem] top-1/2 -translate-y-1/2 z-10 items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border-secondary)] bg-[var(--color-bg-dark)]/20 backdrop-blur-2xl hover:bg-[var(--color-bg-gray)]/20"
-  >
-    <ChevronLeft size={20} className="text-[var(--color-text-primary)]" />
-  </button>
-
-  <div
-    ref={scrollerRef}
-    className="flex gap-4 sm:gap-6 md:gap-4 overflow-x-auto pb-4 pt-2 scroll-snap-x scroll-smooth scrollbar-none"
-    style={{ scrollSnapType: "x mandatory", height: "28rem" }} 
-    onPointerDown={(e) => {
-      const el = scrollerRef.current;
-      if (!el) return;
-      const startX = e.clientX + el.scrollLeft;
-      const onMove = (ev: PointerEvent) => {
-        el.scrollLeft = startX - ev.clientX;
-      };
-      const onUp = () => {
-        window.removeEventListener("pointermove", onMove);
-        window.removeEventListener("pointerup", onUp);
-      };
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp, { once: true });
-    }}
-    role="list"
-    aria-label="Trending idea cards carousel"
-  >
-    {sampleIdeas.map((idea) => (
-      <div
-        key={idea.id}
-        role="listitem"
-        className="scroll-snap-start min-w-[17rem] h-full md:min-w-[24.5rem] flex flex-col items-center"
         
-      >
-        <IdeaCard idea={idea} />
-      </div>
-    ))}
-  </div>
-
-  <button
-    aria-label="Scroll next"
-    onClick={handleNext}
-    className="hidden md:flex absolute right-[-1.5rem] top-1/2 -translate-y-1/2 z-10 items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border-secondary)] bg-[var(--color-bg-dark)]/20 backdrop-blur-2xl hover:bg-[var(--color-bg-gray)]/20"
-  >
-    <ChevronRight size={20} className="text-[var(--color-text-primary)]" />
-  </button>
-</div>
-{/* ————— end carousel ————— */}
 
 
 

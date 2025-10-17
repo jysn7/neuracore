@@ -1,6 +1,7 @@
 import React from "react";
 import { Settings } from "lucide-react";
 import SettingsToggle from "./Settings";
+import Plans from "./Plans";
 
 const AccountSettings = () => {
   return (
@@ -52,6 +53,7 @@ const AccountSettings = () => {
           description="Allow your profile to appear in search results"
         />
       </div>
+      <Plans />
     </div>
   );
 };
