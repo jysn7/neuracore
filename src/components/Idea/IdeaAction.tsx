@@ -45,7 +45,7 @@ const IdeaAction: React.FC<IdeaActionProps> = ({
         className={`flex items-center gap-1 justify-center py-1.5 px-3 rounded-lg cursor-pointer transition-colors duration-400 text-[12px] ${
           liked
             ? "bg-btn-primary text-white"
-            : "bg-transparent border border-border-primary text-white hover:bg-btn-primary-hover"
+            : " border bg-border-primary text-white hover:bg-btn-primary-hover"
         }`}
       >
         <HeartIcon size={14} />
@@ -57,7 +57,7 @@ const IdeaAction: React.FC<IdeaActionProps> = ({
         className={`flex items-center gap-1 justify-center py-2 px-4 rounded-lg cursor-pointer transition-colors duration-300 text-[12px] ${
           saved
             ? "bg-btn-secondary text-white"
-            : "bg-transparent border border-border-secondary text-white hover:bg-btn-secondary-hover"
+            : "bg-transparent border border-border-secondary text-text-primary hover:text-white hover:bg-btn-secondary-hover"
         }`}
       >
         <Bookmark size={14} />
@@ -69,11 +69,11 @@ const IdeaAction: React.FC<IdeaActionProps> = ({
         className={`flex items-center gap-1 justify-center py-2 px-4 rounded-lg cursor-pointer transition-colors duration-300 text-[12px] ${
           shared
             ? "bg-btn-secondary text-white"
-            : "bg-transparent border border-border-secondary text-white hover:bg-btn-secondary-hover"
+            : "bg-transparent border border-border-secondary text-text-primary hover:text-white hover:bg-btn-secondary-hover"
         }`}
       >
         <Share2 size={14} />
-        {shared ? "Shared" : "Share"}
+        Share
       </button>
     </div>
   );

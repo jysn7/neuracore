@@ -52,12 +52,12 @@ const TrendingCarousel: React.FC = () => {
     if (!el) return;
 
     let animationId: number;
-    let speed = 1.1; // slightly faster scroll
+    let speed = 1.1; 
 
     const step = () => {
       el.scrollLeft += speed;
       if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0; // loop seamlessly
+        el.scrollLeft = 0; 
       }
       animationId = requestAnimationFrame(step);
     };
@@ -105,7 +105,7 @@ const TrendingCarousel: React.FC = () => {
   return (
     <section className="bg-gradient-to-b from-bg via-surface/50 to-bg-dark rounded-2xl  shadow-inner mb-12">
       <h2 className="text-2xl font-semibold text-text-primary flex items-center gap-2 mb-4">
-        <TrendingUp className="w-5 h-5 text-primary" />
+        <TrendingUp className="w-5 h-5 text-btn-primary" />
         Trending Ideas
       </h2>
 

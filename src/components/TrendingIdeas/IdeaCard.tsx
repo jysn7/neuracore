@@ -13,6 +13,7 @@ interface Idea {
   comments: string;
   rating: string;
   imageUrl: string;
+  trending: boolean;
 }
 
 const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
@@ -27,10 +28,12 @@ const IdeaCard: React.FC<{ idea: Idea }> = ({ idea }) => {
           className="w-full h-full object-cover"
           alt="cover-img"
         />
-        <div className="bg-red-600 left-1 text-white top-2 rounded-full gap-1 font-semibold text-[10px] p-1 absolute flex">
+        {idea.trending && (
+          <div className="bg-btn-primary left-1 text-white top-2 rounded-full gap-1 font-semibold text-[10px] p-1 absolute flex">
           <TrendingUp size={12} className="m-auto " />
           <p>Trending</p>
         </div>
+        )}
         <div className="right-1 bg-black/40 top-2 rounded gap-1 text-white font-semibold text-[10px] sm:text-xs p-1 absolute flex">
           <Star size={12} className="text-yellow-400 fill-current" />
           <p>{idea.rating}</p>

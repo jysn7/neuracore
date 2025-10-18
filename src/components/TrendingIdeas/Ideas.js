@@ -9,6 +9,7 @@ export const ideas = [
     time: "2hrs ago",
     views: "1.5k",
     likes: "1.2k",
+    trending: false,
     comments: "320",
     rating: "4.8",
     imageUrl:
@@ -24,6 +25,7 @@ export const ideas = [
     time: "5hrs ago",
     views: "980",
     likes: "600",
+    trending: false,
     comments: "120",
     rating: "3.3",
     imageUrl:
@@ -39,6 +41,7 @@ export const ideas = [
     time: "1s ago",
     views: "2.1k",
     likes: "1.5k",
+    trending: true,
     comments: "450",
     rating: "3.9",
     imageUrl:
@@ -54,6 +57,7 @@ export const ideas = [
     time: "8hrs ago",
     views: "1.8k",
     likes: "1.1k",
+    trending: false,
     comments: "280",
     rating: "4.4",
     imageUrl:
@@ -69,6 +73,7 @@ export const ideas = [
     time: "3d ago",
     views: "2.4k",
     likes: "1.9k",
+    trending: true,
     comments: "500",
     rating: "4.0",
     imageUrl:
@@ -84,6 +89,7 @@ export const ideas = [
     time: "12hrs ago",
     views: "1.2k",
     likes: "850",
+    trending: false,
     comments: "200",
     rating: "3.1",
     imageUrl:
@@ -99,6 +105,7 @@ export const ideas = [
     time: "6hrs ago",
     views: "1.7k",
     likes: "1.3k",
+    trending: false,
     comments: "340",
     rating: "3.7",
     imageUrl:
@@ -114,6 +121,7 @@ export const ideas = [
     time: "4d ago",
     views: "2.9k",
     likes: "2.3k",
+    trending: true,
     comments: "620",
     rating: "3.0",
     imageUrl:
@@ -129,6 +137,7 @@ export const ideas = [
     time: "16hrs ago",
     views: "1.6k",
     likes: "1.1k",
+    trending: true,
     comments: "275",
     rating: "3.3",
     imageUrl:
@@ -144,6 +153,7 @@ export const ideas = [
     time: "2d ago",
     views: "2.2k",
     likes: "1.6k",
+    trending: false,
     comments: "410",
     rating: "3.2",
     imageUrl:
@@ -159,6 +169,7 @@ export const ideas = [
     time: "20hrs ago",
     views: "1.4k",
     likes: "900",
+    trending: false,
     comments: "190",
     rating: "4.8",
     imageUrl:
@@ -174,6 +185,7 @@ export const ideas = [
     time: "7hrs ago",
     views: "1.9k",
     likes: "1.4k",
+    trending: true,
     comments: "360",
     rating: "4.2",
     imageUrl:

@@ -3,6 +3,7 @@ import {
   AwardIcon,
   BellIcon,
   HamburgerIcon,
+  LayoutDashboard,
   LightbulbIcon,
   LogOut,
   LucideHamburger,
@@ -60,6 +61,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  
   return (
     <nav className="h-[9vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray md:backdrop-blur-2xl flex justify-between px-[6vw] items-center bg-bg md:bg-bg/30">
       <div className="flex items-end gap-4">
@@ -129,7 +131,7 @@ const Navbar = () => {
 
         <Link
           href="/payment"
-          className="hidden md:flex hover:text-white hover:bg-btn-primary-hover gap-1 text-xs font-semibold items-center hover:border-brand-red text-brand-red border-2 px-2.5 py-0.5 rounded-lg"
+          className="hidden md:flex hover:text-white hover:bg-btn-primary gap-1 text-xs font-semibold items-center hover:border-brand-red text-brand-red border-2 px-2.5 py-0.5 rounded-lg"
         >
           <RocketIcon size={17} /> Upgrade
         </Link>
@@ -154,25 +156,25 @@ const Navbar = () => {
                 href="/profile"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
-                <UserRound size={21} /> Profile
+                <UserRound size={21} className="text-brand-red" /> Profile
               </Link>
               <Link
                 href="/profile?tab=Achievements"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
-                <AwardIcon size={18} /> Achievements
+                <AwardIcon size={18} className="text-brand-red"/> Achievements
               </Link>
               <Link
                 href="/profile?tab=Notifications"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
-                <BellIcon size={18} /> Notifications
+                <BellIcon size={18} className="text-brand-red"/> Notifications
               </Link>
               <Link
                 href="/profile?tab=Settings"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
-                <Settings2Icon size={18} /> Settings
+                <Settings2Icon size={18} className="text-brand-red" /> Settings
               </Link>
               <Link
                 href="/logout"
@@ -222,47 +224,38 @@ const Navbar = () => {
                     href="/trending-ideas"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <LightbulbIcon size={16} /> Ideas
+                    <LightbulbIcon className="text-brand-red" size={16} /> Ideas
                   </Link>
                   <Link
                     href="/challenges"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <WeightIcon size={16} /> Challenges
+                    <WeightIcon size={16} className="text-brand-red" /> Challenges
                   </Link>
                   <Link
                     href="/dashboard(user)"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <svg
-                      className="w-4 h-4 stroke-text-secondary group-hover:stroke-red-500"
-                      viewBox="0 0 17 17"
-                      fill="none"
-                    >
-                      <path
-                        d="M2.23047 2.5V5.83333H5.5638M2.23047 8.5L6.23047 4.5H11.5638L14.2305 7.16667V10.5H5.5638L2.89714 7.83333L2.23047 8.5Z"
-                        strokeWidth="0.666667"
-                      />
-                    </svg>{" "}
+                    <LayoutDashboard size={16} className="text-brand-red"/>
                     Dashboard
                   </Link>
                   <Link
                     href="/leaderboard"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <TrophyIcon size={16} /> Leaderboard
+                    <TrophyIcon size={16} className="text-brand-red" /> Leaderboard
                   </Link>
                   <Link
                     href="/profile?tab=Settings"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <Settings2Icon size={16} /> Settings
+                    <Settings2Icon size={16} className="text-brand-red" /> Settings
                   </Link>
                   <Link
                     href="/profile?tab=Notifications"
                     className="flex items-center gap-3 p-4 text-text-primary hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <BellIcon size={16} /> Notifications
+                    <BellIcon size={16} className="text-brand-red" /> Notifications
                   </Link>
                   <button
                     onClick={toggleTheme}
@@ -279,7 +272,7 @@ const Navbar = () => {
                     href="/payment"
                     className="flex items-center gap-3 p-4 hover:bg-bg-dark-gray rounded-r-full"
                   >
-                    <RocketIcon size={16} /> Upgrade
+                    <RocketIcon size={16} className="text-brand-red" /> Upgrade
                   </Link>
                 </div>
               </div>
