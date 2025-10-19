@@ -5,7 +5,7 @@ import { Award } from "lucide-react";
 
 const Plans: React.FC = () => {
   return (
-    <div className="mt-10 space-y-4">
+    <div className="mt-10 space-y-4" id="plans">
       <h3 className="text-lg font-medium text-foreground flex items-center space-x-2">
         <Award className="w-5 h-5 text-text-primary" />
         <span>Your Plan</span>

@@ -15,6 +15,7 @@ import {
   Settings,
   Settings2Icon,
   SunIcon,
+  TimerReset,
   TrophyIcon,
   UserRound,
   WeightIcon,
@@ -151,7 +152,7 @@ const Navbar = () => {
             <UserRound size={21} />
           </button>
           {isProfileOpen && (
-            <div className="absolute right-0 top-9 mt-3 w-48 rounded-lg border border-bg-gray bg-bg-dark shadow-lg z-50 p-1">
+            <div className="absolute right-3 top-9 mt-3 w-54 rounded-lg border border-bg-gray bg-bg-dark shadow-lg z-50 p-1">
               <Link
                 href="/profile"
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
@@ -175,6 +176,12 @@ const Navbar = () => {
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
                 <Settings2Icon size={18} className="text-brand-red" /> Settings
+              </Link>
+              <Link
+                href="/profile?tab=Settings#plans"
+                className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
+              >
+                <TimerReset size={18} className="text-brand-red" /> Plan
               </Link>
               <Link
                 href="/logout"

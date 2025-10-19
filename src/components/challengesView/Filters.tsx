@@ -29,13 +29,13 @@ const Filters: React.FC<FiltersProps> = ({
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full border bg-bg text-text-primary border-border-secondary rounded-md px-3 py-2 focus:ring-2 focus:ring-brand-red focus:outline-none"
+            className="w-full border bg-bg   text-text-primary border-border-secondary rounded-md px-3 py-2 focus:ring-2 focus:ring-brand-red focus:outline-none"
           >
-            <option value="all">All Categories</option>
-            <option value="technology">Technology</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="education">Education</option>
-            <option value="sustainability">Sustainability</option>
+            <option  value="all">All Categories</option>
+            <option  value="technology">Technology</option>
+            <option  value="healthcare">Healthcare</option>
+            <option  value="education">Education</option>
+            <option  value="sustainability">Sustainability</option>
           </select>
         </div>
 

@@ -40,7 +40,7 @@ const IdeasFilter: React.FC<Props> = ({
                 : "bg-bg border-1 border-brand-red/50 hover:bg-brand-red hover:text-white text-text-primary/80"
             }`}
           >
-            {cat === "all" ? "All" : cat}
+            {cat === "All" ? "All" : cat}
           </button>
         ))}
       </div>

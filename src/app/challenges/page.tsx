@@ -110,7 +110,7 @@ const Challenges: React.FC = () => {
             </p>
           </div>
           <Link
-            href="/submit-challenge"
+            href="/recruiter/submit-challenge"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-btn-primary text-white font-medium hover:bg-btn-primary-hover transition"
           >
             <span className="text-lg">＋</span> Submit Challenge

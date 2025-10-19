@@ -15,7 +15,7 @@ function TrendingIdeas() {
   const [selected, setSelected] = useState("");
 
   const categories = [
-  "all",
+  "All",
   "AI & Technology",
   "Governance",
   "Education",
@@ -38,7 +38,7 @@ function TrendingIdeas() {
       idea.category.toLowerCase().includes(q);
 
     const matchesCategory =
-      !selected || selected === "option1" || idea.category === selected;
+      selected === "All" || selected === "" || idea.category === selected;
 
     return matchesSearch && matchesCategory;
   });
