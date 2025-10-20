@@ -11,7 +11,7 @@
 
   /* Buttons */
   --color-btn-primary: var(--color-brand-red);
-  --color-btn-primary-hover: rgb(181, 59, 87);
+  --color-btn-primary-hover: rgb(116, 23, 45);
   --color-btn-secondary: #1d283a;
   --color-btn-secondary-hover: #233045;
   --color-btn-text: var(--color-brand-white);
@@ -49,12 +49,12 @@
   --color-brand-red: #CD0E3B;
 
   --color-btn-primary: var(--color-brand-red);
-  --color-btn-primary-hover: rgb(181, 59, 87);
+  --color-btn-primary-hover: rgb(132, 36, 59);
   --color-btn-secondary: #1d283a;
   --color-btn-secondary-hover: #233045;
   --color-btn-text: var(--color-brand-white);
 
-  /* 🌤 Backgrounds */
+  /*  Backgrounds */
   --color-bg: #ffffff;
   --color-bg-dark: #fafafa;
   --color-bg-light: #ffffff;
@@ -62,15 +62,15 @@
   --color-bg-dark-gray: #bdbcbc;
   --color-bg-overlay: rgb(255, 255, 255);
 
-  /* ✍️ Text */
+  /*  Text */
   --color-text-primary: #111111;
   --color-text-dark: #000000;
   --color-text-secondary: #737373;
   --color-text-green: #15803d;
 
-  /* 🧱 Borders */
-  --color-border-secondary: #c7c7c7; /* neutral border */
-  --color-border-primary: #CD0E3B;   /* red border accent */
+  /*  Borders */
+  --color-border-secondary: #c7c7c7;
+  --color-border-primary: #CD0E3B;
 
   /* Fonts */
   --font-display: "Poppins", sans-serif;
@@ -126,3 +126,4 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+

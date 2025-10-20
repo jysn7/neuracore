@@ -16,7 +16,7 @@ const IdeaTags: React.FC<IdeaTagsProps> = ({ tags }) => {
             key={index}
             className="border border-border-secondary px-2 py-1 rounded text-text-primary"
           >
-            <p className="text-[10px] font-semibold">#{tag}</p>
+            <p className="text-[10px] font-semibold">{tag}</p>
           </div>
         ))}
       </div>

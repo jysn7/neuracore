@@ -13,6 +13,7 @@ interface Idea {
   comments: string;
   rating: string;
   imageUrl: string;
+  trending: boolean;
 }
 
 interface Props {
