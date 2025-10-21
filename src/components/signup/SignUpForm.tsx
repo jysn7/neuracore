@@ -243,7 +243,7 @@ export default function SignupForm() {
         <button
           type="submit"
           disabled={!termsAgreed}
-          className="bg-btn-primary hover:bg-btn-primary-hover active:bg-black transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-semibold py-2 w-full rounded-sm mt-2"
+          className="bg-btn-primary hover:bg-btn-primary-hover hover:scale-103 active:bg-black transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-semibold py-2 w-full rounded-sm mt-2"
         >
           Create Account
         </button>

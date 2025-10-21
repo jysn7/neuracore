@@ -1,4 +1,5 @@
 "use client";
+import { signOut } from "@/lib/auth";
 import {
   AwardIcon,
   BellIcon,
@@ -23,18 +24,35 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
+  const handleSignOut = async () => {
+    setLoading(true);
+    const { success, error } = await signOut();
+
+    if (success) {
+      router.push("/login"); // redirect after logout
+    } else {
+      console.error("Failed to sign out:", error);
+      alert("Sign out failed. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -183,12 +201,13 @@ const Navbar = () => {
               >
                 <TimerReset size={18} className="text-brand-red" /> Plan
               </Link>
-              <Link
-                href="/logout"
-                className="flex items-center gap-3 px-5 py-3 text-sm text-brand-red hover:bg-brand-red hover:text-white  rounded-md transition-colors"
+              <button
+                onClick={handleSignOut}
+                disabled={loading}
+                className="flex items-center gap-3 px-5 py-3 text-sm text-brand-red hover:bg-brand-red w-full hover:text-white  rounded-md transition-colors"
               >
-                <LogOut size={18} /> Sign Out
-              </Link>
+                <LogOut size={18} /> {loading ? "Signing out..." : "Sign Out"}
+              </button>
             </div>
           )}
         </div>

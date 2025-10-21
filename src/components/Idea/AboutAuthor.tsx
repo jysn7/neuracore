@@ -1,6 +1,8 @@
+import Link from "next/link";
 import React from "react";
 
 interface AuthorProps {
+  id: string;
   name: string;
   initials: string;
   role: string;
@@ -9,6 +11,7 @@ interface AuthorProps {
 }
 
 const AboutAuthor: React.FC<AuthorProps> = ({
+  id,
   name,
   initials,
   role,
@@ -23,13 +26,13 @@ const AboutAuthor: React.FC<AuthorProps> = ({
 
       <div className="flex flex-col sm:flex-row sm:items-start gap-4">
         {/* Avatar */}
-        <div className="flex-shrink-0 flex justify-center sm:justify-start">
+        <Link href={`/profile/${id}`} className="flex-shrink-0 cursor-pointer flex justify-center sm:justify-start">
           <div className="bg-btn-secondary-hover h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full">
             <p className="text-[9px] md:text-[10px] text-white font-semibold">
               {initials}
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Author Info */}
         <div className="flex-1 px-2 sm:px-4">
