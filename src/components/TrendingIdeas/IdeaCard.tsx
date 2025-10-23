@@ -94,7 +94,7 @@ useEffect(() => {
   return (
     <Link
       href={`/idea/${idea.id}`}
-      className="rounded-lg border border-border-secondary hover:shadow-lg hover:border-brand-red transform-all duration-300 bg-bg-dark overflow-hidden"
+      className="rounded-lg border hover:border-border-secondary hover:shadow-lg border-bg shadow transform-all duration-300 bg-bg-dark overflow-hidden"
     >
       <div className="bg-bg-dark-gray relative flex justify-center items-center text-text-primary font-semibold text-sm h-40 sm:h-44 w-full">
         {idea.cover_img ? (

@@ -25,7 +25,7 @@ const IdeasFilter: React.FC<Props> = ({
         placeholder="Search ideas..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="bg-bg-gray border border-border-secondary px-4 py-2 rounded-md sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-btn-primary placeholder:text-text-primary/50"
+        className="bg-bg-dark md:w-1/3 border border-border-secondary px-4 py-2 rounded sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-btn-primary placeholder:text-text-primary/50"
       />
 
       {/* Category Buttons */}

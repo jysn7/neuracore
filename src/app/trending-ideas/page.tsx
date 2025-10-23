@@ -6,31 +6,25 @@ import TrendingHeader from "@/components/TrendingIdeas/TrendingHeader";
 import { withAuth } from "@/components/withAuth";
 import { useSession } from "@/hooks/useSession";
 import IdeasFilter from "@/components/TrendingIdeas/IdeasFilter";
-import { TrendingUp } from "lucide-react";
 
 function TrendingIdeas() {
   const { user } = useSession(false); // false means auth is not required
   const [ideas, setIdeas] = useState<any[]>([]);
+  const [trendingIdeas, setTrendingIdeas] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("");
 
   const categories = [
     "All",
-    "AI & Technology",
-    "Governance",
+    "General",
+    "Tech",
     "Education",
-    "Agriculture",
-    "Sustainability",
-    "Health & Wellness",
-    "Lifestyle",
-    "IoT & Health",
-    "Work & Economy",
-    "Entertainment",
-    "Environment",
+    "Health",
+    "Finance",
   ];
 
-  // 🧠 Fetch ideas from your API route
+  // 🧠 Fetch filtered ideas (for main grid)
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
@@ -40,7 +34,6 @@ function TrendingIdeas() {
         if (query) params.append("search", query);
         if (selected && selected !== "All") params.append("category", selected);
 
-        // You can adjust limit/page as needed
         params.append("limit", "20");
         params.append("page", "1");
 
@@ -62,16 +55,32 @@ function TrendingIdeas() {
     fetchIdeas();
   }, [query, selected]);
 
-  const trendingIdeas = ideas.filter((idea) => idea.likes > 0); // adjust condition for “trending”
+  // 🔥 Fetch all ideas for trending (unfiltered)
+  useEffect(() => {
+    const fetchTrending = async () => {
+      try {
+        const res = await fetch(`/api/ideas/get?limit=100&page=1`);
+        const data = await res.json();
+
+        if (res.ok) {
+          // ✅ Only ideas with more than 2 likes are trending
+          const trending = (data.ideas || []).filter(
+            (idea: { likes: number }) => idea.likes > 1
+          );
+          setTrendingIdeas(trending);
+        }
+      } catch (error) {
+        console.error("Error fetching trending ideas:", error);
+      }
+    };
+
+    fetchTrending();
+  }, []);
 
   return (
     <div className="w-full py-5 md:py-10 min-h-screen bg-bg">
+      {/* 🔥 Trending header always global, not filtered */}
       <TrendingHeader ideas={trendingIdeas} />
-
-      <div className="text-text-primary mb-6 px-[3vw] md:px-[10vw] flex items-center justify-start gap-2">
-        <TrendingUp className="text-brand-red" size={25} />
-        <h1 className="text-lg md:text-2xl font-semibold">Hot Ideas</h1>
-      </div>
 
       <IdeasFilter
         query={query}

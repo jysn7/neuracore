@@ -38,15 +38,15 @@ const AboutAuthor: React.FC<AuthorProps> = ({
         <div className="flex-1 px-2 sm:px-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
             <h1 className="text-text-primary font-semibold">{name}</h1>
-            <p className="text-text-secondary text-sm font-semibold">{role}</p>
+            <p className="text-text-secondary text-sm font-semibold"></p>
           </div>
           <p className="text-xs text-btn-secondary-hover mb-1 font-semibold">
-            {accountType}
+            {role}
           </p>
           <p className="text-sm text-text-secondary my-2">{bio}</p>
 
           <div className="flex mt-4">
-            <button className="flex items-center w-full   gap-1 justify-center border border-border-secondary hover:bg-btn-secondary-hover text-white py-2 px-4 rounded-lg cursor-pointer transition-colors duration-300 text-[12px]">
+            <button className="flex items-center w-full   gap-1 justify-center border border-border-secondary hover:bg-btn-secondary-hover text-text-primary hover:text-white py-2 px-4 rounded-lg cursor-pointer transition-colors duration-300 text-[12px]">
               Follow
             </button>
           </div>

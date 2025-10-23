@@ -21,6 +21,7 @@ interface Author {
   full_name: string;
   avatar_url?: string;
   bio?: string;
+  role: string;
 }
 
 interface IdeaType {
@@ -152,6 +153,8 @@ useEffect(() => {
 
       <IdeaAction
         ideaId={ideaId}
+        currentUserId={user?.id}
+        authorId={idea.author.id}
         onLike={() => console.log("Liked!")}
         onSave={() => console.log("Saved!")}
         onShare={() => console.log("Shared!")}
@@ -174,7 +177,7 @@ useEffect(() => {
           id={author.id}
           name={author.full_name}
           initials={author.username[0].toUpperCase()}
-          role=""
+          role={author.role}
           accountType="Innovator"
           bio={author.bio || "No bio available."}
         />

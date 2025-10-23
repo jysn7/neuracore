@@ -1,7 +1,8 @@
 "use client";
 
-import { ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
+import { ThumbsDownIcon, ThumbsUpIcon, MoreHorizontal, FlagIcon, Edit2, DeleteIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner"; // 🔹 import toast
 
 interface Comment {
   id: string;
@@ -11,7 +12,7 @@ interface Comment {
   timeAgo: string;
   content: string;
   likes: number;
-  isMine?: boolean; // server can mark if this comment belongs to current user
+  isMine?: boolean;
 }
 
 interface IdeaCommentsProps {
@@ -19,13 +20,17 @@ interface IdeaCommentsProps {
   currentUserId?: string;
 }
 
-
 interface CommentWithLike extends Comment {
   likedByMe?: boolean;
 }
 
 const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments, currentUserId }) => {
-  const [commentList, setCommentList] = useState<CommentWithLike[]>(comments);
+  const [commentList, setCommentList] = useState<CommentWithLike[]>([]);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+
+  const toggleMenu = (commentId: string) => {
+    setOpenMenuId(openMenuId === commentId ? null : commentId);
+  };
 
   const handleLike = async (commentId: string) => {
     try {
@@ -49,31 +54,48 @@ const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments, currentUserId }) 
           )
         );
       }
-    } catch (err) {
+
+      toast.success("Like updated!");
+    } catch (err: any) {
       console.error("Failed to toggle like:", err);
       setCommentList((prev) =>
         prev.map((c) =>
           c.id === commentId ? { ...c, likes: Math.max(0, c.likes - 1) } : c
         )
       );
+      toast.error(err.message || "Failed to update like");
     }
   };
 
   const handleDelete = async (commentId: string) => {
     try {
-      const res = await fetch(`/api/comments/delete?comment_id=${commentId}&author_id=${currentUserId}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `/api/comments/delete?comment_id=${commentId}&author_id=${currentUserId}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to delete comment");
 
-      // Remove comment from list
       setCommentList((prev) => prev.filter((c) => c.id !== commentId));
-    } catch (err) {
+      toast.success("Comment deleted!");
+    } catch (err: any) {
       console.error("Failed to delete comment:", err);
+      toast.error(err.message || "Failed to delete comment");
     }
   };
 
+  // Sync new comments immediately
+  useEffect(() => {
+    setCommentList((prev) => {
+      const existingIds = new Set(prev.map(c => c.id));
+      const newComments = comments.filter(c => !existingIds.has(c.id));
+      return [...prev, ...newComments];
+    });
+  }, [comments]);
+
+  // Fetch liked status for all comments
   useEffect(() => {
     const fetchLiked = async () => {
       try {
@@ -106,12 +128,54 @@ const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments, currentUserId }) 
   }
 
   return (
-    <div className="flex flex-col gap-3 mt-4">
+    <div className="flex flex-col gap-5 mt-4">
       {commentList.map((comment) => (
         <div
           key={comment.id}
-          className="w-full rounded-lg py-3 px-2 flex bg-bg-dark border border-border-secondary"
+          className="relative w-full rounded-lg py-3 px-2 flex bg-bg-dark border border-border-secondary"
         >
+          {/* More options button */}
+          <div className="absolute top-2 right-3">
+            <button
+              onClick={() => toggleMenu(comment.id)}
+              className="p-1 rounded-full cursor-pointer hover:bg-border-secondary transition-colors"
+            >
+              <MoreHorizontal size={16} className="text-text-secondary" />
+            </button>
+
+            {/* Popup menu */}
+            {openMenuId === comment.id && (
+              <div className="absolute right-0 mt-2 w-36 bg-bg-dark border border-border-secondary rounded-md shadow-md z-10">
+                {comment.authorId === currentUserId ? (
+                  <>
+                    <button
+                      className="flex gap-2 items-center w-full cursor-pointer text-left px-3 py-4 text-xs text-text-primary hover:bg-border-secondary"
+                      onClick={() => alert("Edit functionality not implemented yet")}
+                    >
+                      <Edit2 size={14} />
+                      Edit
+                    </button>
+                    <button
+                      className="flex gap-2 items-center cursor-pointer w-full text-left px-3 py-4 text-xs text-red-500 hover:bg-border-secondary"
+                      onClick={() => handleDelete(comment.id)}
+                    >
+                      <DeleteIcon size={14} />
+                      Delete
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="flex gap-2 items-center cursor-pointer w-full text-left px-3 py-2 text-xs text-text-primary hover:bg-border-secondary"
+                    onClick={() => alert("Reported")}
+                  >
+                    <FlagIcon size={14} />
+                    Report
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
           <div className="w-14 md:w-18 flex items-start justify-center">
             <div className="bg-btn-primary-hover h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full">
               <p className="text-[9px] md:text-[10px] text-white font-semibold">
@@ -154,17 +218,6 @@ const IdeaComments: React.FC<IdeaCommentsProps> = ({ comments, currentUserId }) 
               <div className="flex gap-1 items-center font-semibold text-text-secondary hover:text-text-primary text-[10px] md:text-xs">
                 <ThumbsDownIcon size={14} />
               </div>
-
-              {/* Delete button visible only if this comment belongs to the current user */}
-              {comment.authorId === currentUserId && (
-                <button
-                  onClick={() => handleDelete(comment.id)}
-                  className="ml-auto text-red-500 hover:text-red-700 text-[10px] md:text-xs font-semibold"
-                >
-                  Delete
-                </button>
-              )}
-
             </div>
           </div>
         </div>

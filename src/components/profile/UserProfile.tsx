@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Edit, MapPin, Link as LinkIcon, CalendarDays } from "lucide-react";
 import { User } from "@supabase/auth-helpers-nextjs";
+import { toast } from "sonner";
 
 interface StatItemProps {
   value: string;
@@ -34,9 +35,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     : "UN";
 
   const [isEditing, setIsEditing] = useState(false);
-  const [loadingFetch, setLoadingFetch] = useState(true); // 🔹 Loading state for fetch
+  const [loadingFetch, setLoadingFetch] = useState(true);
   const [loadingSave, setLoadingSave] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile>({
     name: "",
     email: user.email || "",
@@ -46,7 +46,6 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     created_at: "",
   });
 
-  // Fetch profile data from API
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -76,18 +75,15 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     fetchProfile();
   }, [user.email]);
 
-  // Format join date
   const formatJoinDate = (dateString?: string) => {
     if (!dateString) return "Unknown";
     const date = new Date(dateString);
     return date.toLocaleString("default", { month: "long", year: "numeric" });
   };
 
-  // Handle save changes
   const handleSave = async () => {
     try {
       setLoadingSave(true);
-      setMessage(null);
 
       const res = await fetch("/api/profile/update", {
         method: "PATCH",
@@ -102,16 +98,15 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
 
       if (!res.ok) throw new Error(data.error || "Failed to update profile");
 
-      setMessage("✅ Profile updated successfully!");
       setIsEditing(false);
+      toast.success("Profile updated successfully!");
     } catch (err: any) {
-      setMessage(`❌ ${err.message}`);
+      toast.error(err.message);
     } finally {
       setLoadingSave(false);
     }
   };
 
-  // 🔹 Show loader if fetching
   if (loadingFetch) {
     return (
       <div className="w-full flex justify-center items-center py-20 text-text-secondary">
@@ -245,9 +240,6 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
               >
                 Cancel
               </button>
-              {message && (
-                <p className="text-xs text-text-secondary mt-2">{message}</p>
-              )}
             </div>
           </div>
         </div>

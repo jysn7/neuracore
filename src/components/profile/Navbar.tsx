@@ -3,6 +3,7 @@ import { signOut } from "@/lib/auth";
 import {
   AwardIcon,
   BellIcon,
+  GroupIcon,
   HamburgerIcon,
   LayoutDashboard,
   LightbulbIcon,
@@ -26,6 +27,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,6 +35,13 @@ const Navbar = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [profile, setProfile] = useState<{
+  full_name?: string;
+  username?: string;
+  avatar_url?: string;
+  role?: string;
+} | null>(null);
+
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -46,10 +55,11 @@ const Navbar = () => {
     const { success, error } = await signOut();
 
     if (success) {
+      toast.success("Signed out successfully!");
       router.push("/login"); // redirect after logout
     } else {
       console.error("Failed to sign out:", error);
-      alert("Sign out failed. Please try again.");
+      toast.error("Sign out failed. Please try again.");
     }
 
     setLoading(false);
@@ -64,6 +74,24 @@ const Navbar = () => {
     setTheme(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
+
+  useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      const res = await fetch("/api/profile/get");
+      if (!res.ok) {
+        toast.warning("Not logged in or failed to fetch profile");
+        return;
+      }
+      const data = await res.json();
+      setProfile(data.user || data); // depending on your API shape
+    } catch (err) {
+      console.error("Error fetching profile:", err);
+    }
+  };
+
+  fetchProfile();
+}, []);
 
   const profileRef = useRef<HTMLDivElement>(null);
 
@@ -80,6 +108,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const placeholder = "/account.svg";
   
   return (
     <nav className="h-[9vh] sticky top-0 right-0 left-0 z-30 border-b-2 border-bg-gray md:backdrop-blur-2xl flex justify-between px-[6vw] items-center bg-bg md:bg-bg/30">
@@ -122,31 +151,61 @@ const Navbar = () => {
             <svg className="w-4 h-4" /> Challenges
           </Link>
         </div>
-        <Link
-          href="/submit-idea"
-          className="hidden md:flex items-center justify-center group"
-        >
-          <div
-            className="flex items-center bg-text-primary text-bg-dark-gray 
-            hover:bg-bg-gray hover:text-text-primary rounded-full 
-            px-3 py-2 transition-all duration-500 
-            ease-[cubic-bezier(0.25,0.8,0.25,1)] overflow-hidden"
-            style={{ height: "38px" }}
+        {profile?.role === "moderator" && (
+          <Link
+            href="/submit-challenge"
+            className="hidden md:flex items-center justify-center group"
           >
-            <Plus
-              size={19}
-              className="transition-transform duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] 
-              group-hover:rotate-90"
-            />
-            <span
-              className="inline-block text-sm font-medium overflow-hidden 
-              max-w-0 group-hover:max-w-[90px] group-hover:ml-2
-              transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+            <div
+              className="flex items-center bg-text-primary text-bg-dark-gray 
+              hover:bg-bg-gray hover:text-text-primary rounded-full 
+              px-3 py-2 transition-all duration-500 
+              ease-[cubic-bezier(0.25,0.8,0.25,1)] overflow-hidden"
+              style={{ height: "38px" }}
             >
-              Create Post
-            </span>
-          </div>
-        </Link>
+              <Plus
+                size={19}
+                className="transition-transform duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] 
+                group-hover:rotate-90"
+              />
+              <span
+                className="inline-block text-sm font-medium overflow-hidden 
+                max-w-0 group-hover:max-w-[120px] group-hover:ml-2
+                transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+              >
+                Create Challenge
+              </span>
+            </div>
+          </Link>
+        )}
+        {profile?.role === "user" && (
+          <Link
+            href="/submit-idea"
+            className="hidden md:flex items-center justify-center group"
+          >
+            <div
+              className="flex items-center bg-text-primary text-bg-dark-gray 
+              hover:bg-bg-gray hover:text-text-primary rounded-full 
+              px-3 py-2 transition-all duration-500 
+              ease-[cubic-bezier(0.25,0.8,0.25,1)] overflow-hidden"
+              style={{ height: "38px" }}
+            >
+              <Plus
+                size={19}
+                className="transition-transform duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] 
+                group-hover:rotate-90"
+              />
+              <span
+                className="inline-block text-sm font-medium overflow-hidden 
+                max-w-0 group-hover:max-w-[120px] group-hover:ml-2
+                transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+              >
+                Submit Idea
+              </span>
+            </div>
+          </Link>
+        )}
+        
 
         <Link
           href="/payment"
@@ -163,12 +222,18 @@ const Navbar = () => {
 
         {/* Profile Dropdown */}
         <div className="hidden md:flex items-center relative" ref={profileRef}>
-          <button
+          <div
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className=" cursor-pointer hover:text-bg hover:bg-brand-red rounded-full p-2"
+            className="cursor-pointer rounded-full overflow-hidden h-10 w-10 hover:ring-2 hover:ring-brand-red transition-all"
           >
-            <UserRound size={21} />
-          </button>
+            <Image
+              src={profile?.avatar_url || placeholder}
+              alt="profile-pic"
+              width={35}
+              height={35}
+              className="object-cover"
+            />
+          </div>
           {isProfileOpen && (
             <div className="absolute right-3 top-9 mt-3 w-54 rounded-lg border border-bg-gray bg-bg-dark shadow-lg z-50 p-1">
               <Link
@@ -200,6 +265,12 @@ const Navbar = () => {
                 className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
               >
                 <TimerReset size={18} className="text-brand-red" /> Plan
+              </Link>
+              <Link
+                href="/collab-hub"
+                className="flex items-center gap-3 px-5 py-3 text-sm hover:text-white hover:bg-bg-dark-gray rounded-md transition-colors"
+              >
+                <GroupIcon size={18} className="text-brand-red" /> CollabHub
               </Link>
               <button
                 onClick={handleSignOut}
@@ -241,7 +312,7 @@ const Navbar = () => {
                     <UserRound size={18} />
                   </div>
                   <h1 className="text-text-primary font-semibold">
-                    Jayson Baloyi
+                    {profile?.full_name}
                   </h1>
                 </div>
 

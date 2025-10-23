@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 interface AddCommentProps {
   author: Author;       // the user who is posting
@@ -32,7 +33,7 @@ const AddComment: React.FC<AddCommentProps> = ({ author, ideaId, totalComments }
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           idea_id: ideaId,
-          author: author.id, // pass author ID from frontend
+          author: author.id,
           content: text.trim(),
         }),
       });
@@ -42,10 +43,13 @@ const AddComment: React.FC<AddCommentProps> = ({ author, ideaId, totalComments }
       if (!res.ok) throw new Error(data.error || "Failed to post comment");
 
       setText(""); // clear textarea
+      toast.success("Comment posted!");
+
       console.log("Comment posted!", data);
-      // optionally you could update parent state to show new comment
+      // optionally update parent state to show new comment
     } catch (err: any) {
       setError(err.message);
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }
