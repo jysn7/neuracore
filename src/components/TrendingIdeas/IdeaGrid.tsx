@@ -1,19 +1,30 @@
 import React from "react";
 import IdeaCard from "./IdeaCard";
 
+// Updated interface to match API response
+interface Author {
+  id: string;
+  username: string;
+  full_name: string;
+  avatar_url: string;
+}
+
 interface Idea {
-  id: number;
+  id: string;
   title: string;
   category: string;
-  description: string;
-  author: string;
-  time: string;
-  views: string;
-  likes: string;
-  comments: string;
-  rating: string;
-  imageUrl: string;
-  trending: boolean;
+  summary: string;       // your API uses `summary` instead of `description`
+  content: string;
+  author: Author;
+  created_at: string;
+  updated_at: string;
+  likes?: number;
+  // comments?: number;
+  share_count?: number;
+  view_count?: number;
+  tags?: string[];
+  cover_img?: string;
+  trending?: boolean;
 }
 
 interface Props {
