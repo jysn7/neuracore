@@ -9,7 +9,7 @@ export async function GET(req: Request, { params }: Params) {
   try {
     const supabase = await createClient();
 
-    // Get current session/user
+    // Get current user
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (sessionError || !session?.user) {
       return NextResponse.json({ liked: false }, { status: 200 });

@@ -83,37 +83,64 @@ function Idea() {
     fetchIdea();
   }, [ideaId]);
 
-  
-
-useEffect(() => {
+  //increment view count
+  useEffect(() => {
   if (!ideaId) return;
 
-  const fetchComments = async () => {
+  const incrementViews = async () => {
     try {
-      const res = await fetch(`/api/comments/${ideaId}`);
+      const res = await fetch(`/api/ideas/${ideaId}/view`, {
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        console.error("Failed to increment view count", res.statusText);
+        return;
+      }
+
       const data = await res.json();
-      const commentsArray = Array.isArray(data) ? data : data.comments || [];
-      
-      // Map to your Comment interface
-      const formatted = commentsArray.map((c: any) => ({
-        id: c.id,
-        authorId: c.author?.id,
-        initials: c.author?.username[0].toUpperCase() || "U",
-        author: c.author?.full_name || "Unknown",
-        timeAgo: new Date(c.created_at).toLocaleString(),
-        content: c.content, 
-        likes: c.likes || 0,
-      }));
-      setComments(formatted);
+
+      // Update the idea state with the new view_count
+      setIdea((prev) => (prev ? { ...prev, view_count: data.view_count } : prev));
     } catch (err) {
-      console.error(err);
+      console.error("Error incrementing view count:", err);
     }
   };
 
-  fetchComments();
+  incrementViews();
 }, [ideaId]);
 
-  // Fetch author AFTER idea is loaded
+
+  //fetch comments
+  useEffect(() => {
+    if (!ideaId) return;
+
+    const fetchComments = async () => {
+      try {
+        const res = await fetch(`/api/comments/${ideaId}`);
+        const data = await res.json();
+        const commentsArray = Array.isArray(data) ? data : data.comments || [];
+        
+        // Map to your Comment interface
+        const formatted = commentsArray.map((c: any) => ({
+          id: c.id,
+          authorId: c.author?.id,
+          initials: c.author?.username[0].toUpperCase() || "U",
+          author: c.author?.full_name || "Unknown",
+          timeAgo: new Date(c.created_at).toLocaleString(),
+          content: c.content, 
+          likes: c.likes || 0,
+        }));
+        setComments(formatted);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchComments();
+  }, [ideaId]);
+
+  //fetch author
   useEffect(() => {
     if (!idea?.author?.id) return;
 
@@ -178,6 +205,7 @@ useEffect(() => {
           name={author.full_name}
           initials={author.username[0].toUpperCase()}
           role={author.role}
+          avatar_url={author.avatar_url}
           accountType="Innovator"
           bio={author.bio || "No bio available."}
         />

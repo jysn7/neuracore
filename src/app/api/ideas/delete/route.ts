@@ -5,7 +5,6 @@ export async function DELETE(req: NextRequest) {
   try {
     const supabase = await createClient();
 
-    // ✅ Check authentication
     const {
       data: { user },
       error: authError,
@@ -28,7 +27,6 @@ export async function DELETE(req: NextRequest) {
       );
     }
 
-    // ✅ Delete idea (RLS must enforce author = user.id)
     const { error } = await supabase
       .from("ideas")
       .delete()

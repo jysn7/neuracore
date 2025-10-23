@@ -8,7 +8,7 @@ export async function DELETE(request: Request) {
 
     const { searchParams } = new URL(request.url);
     const commentId = searchParams.get("comment_id");
-    const authorId = searchParams.get("author_id"); // <-- get authorId from query
+    const authorId = searchParams.get("author_id"); 
 
     if (!commentId || !authorId) {
       return NextResponse.json(

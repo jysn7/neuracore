@@ -9,7 +9,7 @@ export async function POST(request: Request, { params }: Params) {
   try {
     const supabase = await createClient();
 
-    // Get the current logged-in user from the session
+   
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (sessionError || !session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -24,8 +24,7 @@ export async function POST(request: Request, { params }: Params) {
     // Call toggle_like function in Supabase
     const { error } = await supabase.rpc("toggle_like", { idea_id: id });
     if (error) throw error;
-
-    // Optionally, fetch updated likes count
+    
     const { data: ideaData, error: fetchError } = await supabase
       .from("ideas")
       .select("likes")

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/app/lib/supabase/server";
 
-// POST /api/comments/like?comment_id=<uuid>
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
@@ -15,7 +14,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Call Postgres function to toggle like
     const { error } = await supabase.rpc("toggle_comment_like", {
       comment_id: commentId,
     });
@@ -25,7 +23,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // Fetch updated like count
     const { data: updatedComment, error: fetchError } = await supabase
       .from("comments")
       .select("id, likes")

@@ -25,6 +25,7 @@ const ProfileView: React.FC = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"ideas" | "challenges">("ideas");
   const [user, setUser] = useState<any>(null);
+  const [userIdeas, setUserIdeas] = useState<any[]>([]);
 
   // ✅ Fetch profile by ID
   useEffect(() => {
@@ -42,6 +43,24 @@ const ProfileView: React.FC = () => {
     };
 
     fetchUser();
+  }, [id]);
+
+  // Fetch ideas by this author
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchUserIdeas = async () => {
+      try {
+        const res = await fetch(`/api/ideas/author/${id}`);
+        if (!res.ok) throw new Error("Failed to fetch user's ideas");
+        const data = await res.json();
+        setUserIdeas(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchUserIdeas();
   }, [id]);
   // const user = {
   //   id: id as string,
@@ -66,22 +85,22 @@ const ProfileView: React.FC = () => {
   //   ],
   // };
 
-  const userIdeas = [
-    {
-      id: 1,
-      title: "AI-Powered Code Review Assistant",
-      category: "Technology",
-      votes: 234,
-      comments: 45,
-    },
-    {
-      id: 2,
-      title: "Sustainable Food Delivery Network",
-      category: "Sustainability",
-      votes: 189,
-      comments: 32,
-    },
-  ];
+  // const userIdeas = [
+  //   {
+  //     id: 1,
+  //     title: "AI-Powered Code Review Assistant",
+  //     category: "Technology",
+  //     votes: 234,
+  //     comments: 45,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Sustainable Food Delivery Network",
+  //     category: "Sustainability",
+  //     votes: 189,
+  //     comments: 32,
+  //   },
+  // ];
 
   const userChallenges = [
     {
