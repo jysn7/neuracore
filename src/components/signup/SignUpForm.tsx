@@ -17,7 +17,7 @@ export default function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   const signupSchema = z
     .object({
